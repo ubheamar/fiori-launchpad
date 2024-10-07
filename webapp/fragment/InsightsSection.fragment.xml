@@ -1,0 +1,206 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:w="sap.ui.integration.widgets"
+    xmlns:core="sap.ui.core"
+    xmlns:grid="sap.ui.layout.cssgrid"
+>
+     <!-- Header content -->
+    <HBox id="idInsightsToolbar" alignItems="Center" justifyContent="SpaceBetween">
+        <HBox id="idInsightsBar">
+            <customData>
+                <core:CustomData key="sap-ui-fastnavgroup" value="true" writeToDom="true" />
+            </customData>
+            <Title id="idInsightsTitle" text="{i18n>myInsightsTab}" visible="{= (${view>/dynamicApps/length} === 0 &amp;&amp; (${view>/myInsights/status} === 'NoCard' || ${view>/myInsights/status} === 'Loading')) || !${view>/insightsSectionLoaded}}" titleStyle="H4" class="sapMTitleAlign sapTitlePadding sapUiSmallMarginEnd"/>
+            <Title id="idInsightsTitleWithTilesCount" text="{
+                parts: [
+                    'i18n>myInsightsTab',
+                    'view>/dynamicApps/length'
+                ],
+                formatter: '._formatTitle'
+            }" visible="{= ${view>/myInsights/status} === 'NoCard' &amp;&amp; ${view>/dynamicApps/length} !== 0}" titleStyle="H4" class="sapMTitleAlign sapTitlePadding sapUiSmallMarginEnd"/>
+            <Title id="idInsightsTitleWithCardsCount" text="{
+                parts: [
+                    'i18n>myInsightsTab',
+                    'insights>/cardCount'
+                ],
+                formatter: '._formatTitle'
+            }" visible="{= ${view>/dynamicApps/length} === 0 &amp;&amp; ${view>/myInsights/status} === 'Loaded'}" titleStyle="H4" class="sapMTitleAlign sapTitlePadding sapUiTinyMarginEnd"/>
+            <Button
+                id="insightsMenuIcon"
+                icon="{=${view>/isPhoneScreen} ? 'sap-icon://overflow' : 'sap-icon://slim-arrow-down'}"
+                type="Transparent"
+                ariaLabelledBy="idInsightsTitleWithTilesCount idInsightsTitleWithCardsCount idInterestTitleAriaText"
+                tooltip="{i18n>tooltipHamburgerIcon}"
+                visible="{= ${view>/myInsights/status} !== 'Loading' &amp;&amp; (${view>/dynamicApps/length} === 0 || ${view>/myInsights/status} === 'NoCard')}"
+                press="showMenuPopover('INSIGHTS', $event)"/>
+        </HBox>
+        <HBox id="insightsActionsContainer" alignItems="Center" renderType="Bare" visible="{= ${view>/myInsights/status} !== 'Loading' &amp;&amp; (${view>/dynamicApps/length} === 0 || ${view>/myInsights/status} === 'NoCard') &amp;&amp; !${view>/sections/INSIGHTS_TILES/expanded} &amp;&amp; !${view>/sections/INSIGHTS_CARDS/expanded} &amp;&amp; !${view>/isPhoneScreen}}">
+            <Button
+                id="addFromFavoritesTab"
+                type="Transparent"
+                tooltip="{i18n>addSamrtApps}"
+                text="{i18n>appFinderLink}"
+                class="refreshBtnMargin"
+                visible="{= !${view>/isPhoneScreen} &amp;&amp; ${view>/myApps/editVisible}}"
+                press=".openSuggestedTileDialog"/>
+            <ToggleButton id="insightsExpandBtn" type="Transparent" text="{= ${view>expanded} ? ${i18n>collapse} : ${i18n>expand} }" binding="{view>/sections/INSIGHTS}" pressed="{ path: 'view>expanded', mode: 'TwoWay' }"
+                press=".expandSection({'isSectionExpanded':${$parameters>pressed}, 'expandType':'INSIGHTS', 'isHashChangeTrigger':false})"
+                visible="{= ${view>/sections/INSIGHTS/expanded} || ((${view>/dynamicApps/length} === 0 || ${view>/myInsights/status} === 'NoCard') &amp;&amp; (${view>/dynamicApps/viewAllVisible} || ${view>/myInsights/viewAllVisible}) &amp;&amp; !${view>/isPhoneScreen}) }"/>
+        </HBox>
+        <HBox id="idTileActionsBar1" visible="{= !${view>/insightHeaderVisibility} &amp;&amp; (${view>/sections/INSIGHTS_TILES/expanded}) &amp;&amp; !${view>/isPhoneScreen}}">
+            <Button id="idInsightsSuggTilesMenuBtnExpandedTiles"
+                type="Transparent"
+                tooltip="{i18n>addSamrtApps}"
+                text="{i18n>appFinderLink}"
+                class="refreshBtnMargin"
+                press="openSuggestedTileDialog"
+                visible="{= !${view>/isPhoneScreen} &amp;&amp; ${view>/myApps/editVisible}}"/>
+            <ToggleButton id="tilesExpandBtn" type="Transparent" text="{= ${view>expanded} ? ${i18n>collapse} : ${i18n>expand} }" binding="{view>/sections/INSIGHTS_TILES}" pressed="{view>expanded}"
+                press=".expandSection({'isSectionExpanded':${$parameters>pressed}, 'expandType':'INSIGHTS_TILES', 'isHashChangeTrigger':false})"
+                visible="{= ${view>/sections/INSIGHTS_TILES/expanded} || (${view>/dynamicApps/viewAllVisible}) }"/>
+        </HBox>
+        <HBox id="idCardActionsBar1" visible="{= !${view>/insightHeaderVisibility} &amp;&amp; (${view>/sections/INSIGHTS_CARDS/expanded}) &amp;&amp; !${view>/isPhoneScreen}}">
+             <Button id="idInsightsSuggTilesMenuBtnExpandedCards"
+                type="Transparent"
+                tooltip="{i18n>addSamrtApps}"
+                text="{i18n>appFinderLink}"
+                class="refreshBtnMargin"
+                press="openSuggestedTileDialog"
+                visible="{= !${view>/isPhoneScreen} &amp;&amp; ${view>/myApps/editVisible}}"/>
+            <ToggleButton id="cardsExpandBtn" type="Transparent" text="{= ${view>expanded} ? ${i18n>collapse} : ${i18n>expand} }" binding="{view>/sections/INSIGHTS_CARDS}" pressed="{view>expanded}"
+                press=".expandSection({'isSectionExpanded':${$parameters>pressed}, 'expandType':'INSIGHTS_CARDS', 'isHashChangeTrigger':false})"
+                visible="{= (${view>/sections/INSIGHTS_CARDS/expanded} || (${view>/myInsights/viewAllVisible})) }"/>
+        </HBox>
+    </HBox>
+
+    <VBox id="sectionPlaceholder" visible="{= !${view>/insightsSectionLoaded} }">
+        <core:Fragment id="insightsPlaceholder" fragmentName="shellpoc.fragment.insightsSectionPlaceholder" type="XML" />
+    </VBox>
+
+    <VBox id="wrapper" visible="{view>/insightsSectionLoaded}">
+        <!-- DYNAMIC TILES -->
+        <HBox id="idTilesBar" visible="{= (${view>/dynamicApps/length} !== 0 &amp;&amp; !${view>/sections/INSIGHTS_CARDS/expanded} &amp;&amp; !${view>/myInsights/disabled} &amp;&amp; ${view>/myInsights/status} !== 'NoCard') }" alignItems="Center" justifyContent="SpaceBetween">
+            <customData>
+                <core:CustomData key="sap-ui-fastnavgroup" value="true" writeToDom="true" />
+            </customData>
+            <HBox id="tilesTitleContainer" alignItems="Center">
+                <Title id="idTilesTitle" text="{
+                    parts: [
+                        'i18n>insightsTiles',
+                        'view>/dynamicApps/length'
+                    ],
+                    formatter: '._formatTitle'}" titleStyle="H4" class="sapMTitleAlign sapTitlePadding sapUiTinyMarginEnd"/>
+                <Button
+                    id="insightTilesMenuIcon"
+                    icon="{=${view>/isPhoneScreen} ? 'sap-icon://overflow' : 'sap-icon://slim-arrow-down'}"
+                    type="Transparent"
+                    ariaLabelledBy="idTilesTitle insightTilesMenuIcon"
+                    tooltip="{i18n>tooltipHamburgerIcon}"
+                    visible="{= ${view>/insightHeaderVisibility}}"
+                    press="showMenuPopover('INSIGHTS_TILES', $event)"/>
+            </HBox>
+            <HBox id="idTileActionsBar" visible="{= !${view>/isPhoneScreen} }">
+                <core:InvisibleText id="idTilesTitleAriaText" text="{i18n>groupTitle}" />
+                <Button id="idSuggTilesMenuBtn"
+                    type="Transparent"
+                    tooltip="{i18n>addSamrtApps}"
+                    text="{i18n>appFinderLink}"
+                    class="refreshBtnMargin"
+                    press=".openSuggestedTileDialog"
+                    visible="{= !${view>/isPhoneScreen} &amp;&amp; ${view>/myApps/editVisible}}"/>
+                <ToggleButton id="tilesExpandButton" type="Transparent" text="{= ${view>expanded} ? ${i18n>collapse} : ${i18n>expand} }" binding="{view>/sections/INSIGHTS_TILES}" pressed="{view>expanded}"
+                    press=".expandSection({'isSectionExpanded': ${$parameters>pressed}, 'expandType':'INSIGHTS_TILES', 'isHashChangeTrigger':false})"
+                    visible="{= ${view>/sections/INSIGHTS_TILES/expanded} || ${view>/dynamicApps/viewAllVisible} }"/>
+            </HBox>
+        </HBox>
+         <HeaderContainer id="dynAppHeaderContainer" visible="{= ${view>/dynamicApps/length} === 0 || !${view>/isPhoneScreen} ? false : true }" scrollStepByItem="1" scrollStep="0"
+            gridLayout="{= ${view>/isPhoneScreen} ? true : false }" scrollTime="1000" showDividers="false" class="myhomeSectionMarginTopToDoInsight sapMHeaderContainerAlign sapMHeaderContainerMarginBottom tilesBoxShadow">
+            <GenericTile id="idDynamicAppTile-1" state="{view>/dynamicApps/status}" />
+            <GenericTile id="idDynamicAppTile-2" state="{view>/dynamicApps/status}" />
+            <GenericTile id="idDynamicAppTile-3" state="{view>/dynamicApps/status}" />
+            <GenericTile id="idDynamicAppTile-4" state="{view>/dynamicApps/status}" />
+            <GenericTile id="idDynamicAppTile-5" state="{view>/dynamicApps/status}" />
+            <GenericTile id="idDynamicAppTile-6" state="{view>/dynamicApps/status}" />
+            <GenericTile id="idDynamicAppTile-7" state="{view>/dynamicApps/status}" />
+            <GenericTile id="idDynamicAppTile-8" state="{view>/dynamicApps/status}" />
+        </HeaderContainer>
+        <f:GridContainer id="dynAppsFlexContainer" visible="{= !${view>/isPhoneScreen} &amp;&amp; !${view>/sections/INSIGHTS_CARDS/expanded} &amp;&amp; ${view>/dynamicApps/length} !== 0 }" class="toDoCardsGap sapUiSmallMarginTop sapUiMediumMarginBottom insightTiles"/>
+
+        <!-- INTEGRATION CARDS -->
+        <HBox id="idCardsBar" visible="{= (${view>/dynamicApps/length} !== 0 &amp;&amp; !${view>/myInsights/disabled} &amp;&amp; !${view>/sections/INSIGHTS_TILES/expanded}) &amp;&amp; ${view>/myInsights/status} !== 'NoCard' }" alignItems="Start" justifyContent="SpaceBetween">
+            <customData>
+                <core:CustomData key="sap-ui-fastnavgroup" value="true" writeToDom="true" />
+            </customData>
+            <HBox id="cardsTitleContainer" alignItems="Center">
+                <Title id="idInsightsTitlePl" text="{i18n>insightsCards}" titleStyle="H4" class="sapMTitleAlign sapTitlePadding" visible="{=${view>/dynamicApps/length} !== 0 &amp;&amp; ${view>/myInsights/status} === 'Loading'}"/>
+                <Title id="idCardsTitle" text="{
+                    parts: [
+                        'i18n>insightsCards',
+                        'insights>/cardCount'
+                    ],
+                    mode: 'TwoWay',
+                    formatter: '._formatTitle'}" titleStyle="H4" class="sapMTitleAlign sapTitlePadding sapUiTinyMarginEnd" visible="{=${view>/myInsights/status} === 'Loaded' &amp;&amp; ${view>/insightHeaderVisibility}}"/>
+                <Button
+                        id="insightCardsMenuIcon"
+                        icon="{=${view>/isPhoneScreen} ? 'sap-icon://overflow' : 'sap-icon://slim-arrow-down'}"
+                        type="Transparent"
+                        ariaLabelledBy="idCardsTitle insightCardsMenuIcon"
+                        tooltip="{i18n>tooltipHamburgerIcon}"
+                        visible="{=${view>/myInsights/status} !== 'Loading'}"
+                        press="showMenuPopover('INSIGHTS_CARDS', $event)"/>
+            </HBox>
+            <HBox id="idCardActionsBar" visible="{= !${view>/isPhoneScreen} &amp;&amp; ${view>/insightsCardsLoaded}}">
+                <core:InvisibleText id="idCardsTitleAriaText" text="{i18n>groupTitle}" />
+                <ToggleButton id="cardsExpandButton" type="Transparent" text="{= ${view>expanded} ? ${i18n>collapse} : ${i18n>expand} }" binding="{view>/sections/INSIGHTS_CARDS}" pressed="{view>expanded}"
+                    press=".expandSection({'isSectionExpanded': ${$parameters>pressed}, 'expandType':'INSIGHTS_CARDS', 'isHashChangeTrigger':false})"
+                    visible="{= (${view>/sections/INSIGHTS_CARDS/expanded} || (${view>/myInsights/viewAllVisible})) }"/>
+            </HBox>
+        </HBox>
+        <HeaderContainer id="idInsightsCardContainer" scrollStepByItem="1" scrollStep="0" gridLayout="{= ${view>/isPhoneScreen} ? true : false }" scrollTime="1000" showDividers="false" visible="{= ${view>/myInsights/status} === 'Loaded' &amp;&amp; ${view>/isPhoneScreen} }"
+            class="myhomeSectionMarginTopToDoInsight sapMHeaderContainerAlign cardsBoxShadow" content="{insights>/cards}">
+            <VBox id="insightflex" justifyContent="Center" class="sapUiNoMargin sapMPageBgSolid" >
+                <w:Card id="insightsCard" manifest="{insights>descriptorContent}" width="{view>/insightsCardWidth}" height="{view>/insightsCardHeight}" manifestReady="setOverFlowVisible"/>
+                <HBox id="insightsCardOverflowLayer" class="sapMFlexBoxJustifyCenter" height="0">
+                    <HBox id="insightsCardOverflowInnerHBox" class="insightsCardOverflowLayer insightsCardOverflowTop" width="{view>/insightsCardWidthOverflow}" height="{view>/insightsCardHeightOverflow}"/>
+                </HBox>
+            </VBox>
+        </HeaderContainer>
+        <f:GridList id="cardsFlexContainer" items="{view>/myInsights/flexCards}" class = "toDoCardsGap sapUiSmallMarginTop cardsExpandedPadding cardsContainer"
+            visible="{= ${view>/myInsights/status} === 'Loaded' &amp;&amp; !${view>/isPhoneScreen} &amp;&amp; !${view>/sections/INSIGHTS_TILES/expanded} }">
+            <f:customLayout>
+                <grid:GridBasicLayout id="idCardsGridBasicLayout" gridTemplateColumns="repeat(auto-fit, {view>/insightsCardWidth})" gridGap="1rem" />
+            </f:customLayout>
+            <f:GridListItem id="idCardsGridListItem">
+                <VBox id="insightflexFC" justifyContent="Center" class="sapUiNoMargin sapMPageBgSolid" >
+                    <w:Card id="insightsCardFC" manifest="{view>descriptorContent}" width="{view>/insightsCardWidth}" height="{view>/insightsCardHeight}" manifestReady="setOverFlowVisible"/>
+                    <HBox id="insightsCardOverflowLayerFC" class="sapMFlexBoxJustifyCenter" height="0">
+                        <HBox id="insightsCardOverflowInnerHBoxFC" class="insightsCardOverflowLayer insightsCardOverflowTop" width="{view>/insightsCardWidthOverflow}" height="{view>/insightsCardHeightOverflow}"/>
+                    </HBox>
+                </VBox>
+            </f:GridListItem >
+        </f:GridList>
+        <VBox id="idInsightsPlaceholderContainer" visible="{= ${view>/myInsights/status} === 'Loading' &amp;&amp; !${view>/sections/INSIGHTS_TILES/expanded}}" class="insightsPlaceholderContainer">
+            <core:Fragment fragmentName="shellpoc.fragment.myInsightsPlaceHolder" type="XML" />
+        </VBox>
+
+        <!-- ERROR CARDS -->
+        <VBox id="idNoInsightsCardsVBox" backgroundDesign="Solid" class="myAppMFBContent sapUiSmallMarginTop noCardsBorder"
+            visible="{= (${view>/myInsights/status} === 'NoCard' &amp;&amp; ${view>/dynamicApps/length} === 0 ? true : false) || (${view>/sections/INSIGHTS_TILES/expanded} &amp;&amp; ${view>/dynamicApps/length} === 0 ? true : false) || (${view>/sections/INSIGHTS_CARDS/expanded} &amp;&amp; ${view>/myInsights/status} === 'NoCard')}">
+            <IllustratedMessage id="idNoInsightsCardsMsg" class="myHomeIllustratedMsg myHomeIllustratedMessageAlign myHomeFrequentIllustratedMessageAlign" illustrationSize="Spot" illustrationType="sapIllus-AddDimensions" title="{i18n>insightSectionNoDataTitle}" description="{= ${view>/myInsights/disabled} ? ${i18n>tilesSectionNoDataDescription} : ${i18n>insightSectionNoDataDescription} }">
+                <additionalContent>
+                    <Button text="{i18n>manageInsightBtn}" id="idInsightsSectionManageCards" type="Emphasized" press="_showManageSectionsDialog('INSIGHTS_CARDS')" visible="{= !${view>/myInsights/disabled}}"/>
+                </additionalContent>
+            </IllustratedMessage>
+        </VBox>
+        <VBox id="idErrorInsightsCardsVBox" backgroundDesign="Solid" class="myAppMFBContent sapUiSmallMarginTopBottom noCardsBorder"
+            visible="{= (${view>/myInsights/status} === 'Error' &amp;&amp; ${view>/dynamicApps/length} === 0) ? true : false}">
+            <IllustratedMessage id="idErrorInsightsCardsMsg" class="myHomeIllustratedMsg myHomeIllustratedMessageAlign myHomeFrequentIllustratedMessageAlign" illustrationSize="Spot" illustrationType="sapIllus-UnableToLoad" title="{i18n>insightsErrorTitle}" description="{i18n>insightsErrorMsg}" />
+        </VBox>
+
+        <!-- FOOTER DIV: VISIBLE ONLY IN EXPANDED MODE -->
+        <HBox id="insightsFooter" width="100%" visible="{= ${view>/sections/INSIGHTS/expanded} || ${view>/sections/INSIGHTS_TILES/expanded} || ${view>/sections/INSIGHTS_CARDS/expanded} }">
+            <HBox id="insightsFooterContent" class="sectionFooter"/>
+        </HBox>
+    </VBox>
+</core:FragmentDefinition>

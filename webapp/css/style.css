@@ -1,1 +1,795 @@
 /* Enter your custom styles here */
+.myHomeIllustratedMsg.myHomeIllustratedMessageAlign.sapMIllustratedMessage.sapMIllustratedMessage-Scene {
+    padding: 0rem;
+}
+
+.myHomeIllustratedMsg.myHomeIllustratedMessageAlign.sapMIllustratedMessage.sapMIllustratedMessage-Scene
+    .sapMIllustration {
+    height: 12rem;
+}
+
+.myHomeIllustratedMsg.myHomeIllustratedMessageAlign.sapMIllustratedMessage.sapMIllustratedMessage-Scene .sapMTitle {
+    margin-top: 1.619rem;
+}
+
+.myHomeIllustratedMsg.myHomeIllustratedMessageAlign.sapMIllustratedMessage.sapMIllustratedMessage-Scene
+    .sapMIllustratedMessageAdditionalContent {
+    margin-bottom: 1.5rem;
+    margin-top: 1.188rem;
+}
+
+.myHomeIllustratedMsg.myHomeIllustratedMessageAlign.sapMIllustratedMessage.sapMIllustratedMessage-Scene figcaption,
+.groupHeaderHeight {
+    height: 4rem !important;
+}
+
+.myHomeIllustratedMsg.myHomeIllustratedMessageAlign.sapFRecentsIllustratedMessageAlign.sapMIllustratedMessage.sapMIllustratedMessage-Scene
+    .sapMTitle {
+    margin-top: 1.119rem;
+}
+
+.myHomeIllustratedMsg.myHomeIllustratedMessageAlign.sapFRecentsIllustratedMessageAlign.sapMIllustratedMessage.sapMIllustratedMessage-Scene
+    .sapMIllustratedMessageAdditionalContent {
+    margin-bottom: 1.5rem;
+}
+
+.myHomeIllustratedMsg.myHomeIllustratedMessageAlign.sapFFrequentIllustratedMessageAlign.sapMIllustratedMessage.sapMIllustratedMessage-Scene
+    .sapMTitle {
+    margin-top: 1.119rem;
+}
+
+.myHomeIllustratedMsg.myHomeIllustratedMessageAlign.sapFFrequentIllustratedMessageAlign.sapMIllustratedMessage.sapMIllustratedMessage-Scene
+    .sapMIllustratedMessageAdditionalContent {
+    margin-bottom: 1.5rem;
+}
+
+.myHomeIllustratedMsg.sapMIllustratedMessage.sapIllustratedCardNoTasks .sapMIllustratedMessageDescription {
+    margin-bottom: 0;
+}
+
+.myHomeIllustratedMsg.sapMIllustratedMessage.sapIllustratedCardNoTasks .sapMIllustratedMessageAdditionalContent {
+    margin: 0;
+}
+
+.sapUiNoPadding .sapMITBContent {
+    padding: 1rem 0rem 0rem 0rem;
+    border: 0.125rem solid var(--sapUiTileBorderColor);
+}
+
+.sapUiNoPadding .sapMITH,
+.sapUiITBHide .sapMITBContent {
+    padding: 0;
+}
+
+.myhomeTodosAdjustPadding .sapMITBContent {
+    padding: 0.5rem 0rem 0rem 0rem;
+    border: 0.125rem solid var(--sapUiTileBorderColor);
+}
+
+.noCardsBorder {
+    box-shadow: var(--_sap_f_Card_BoxShadow);
+    border-radius: var(--_sap_f_Card_BorderRadius);
+    border: 0.125rem solid var(--sapUiTileBorderColor);
+    box-sizing: content-box;
+}
+
+.sapUiMargin-24Top {
+    margin-top: 24px;
+}
+
+.sapUiMargin-2Begin {
+    margin-left: 0.125rem;
+}
+
+.sapUiMargin-9Top {
+    margin-top: 0.563rem;
+}
+
+.sapUiMargin-26Top {
+    margin-top: 1.625rem;
+}
+
+.sapUiMargin-26Bottom {
+    margin-bottom: 1.625rem;
+}
+
+.sapUiRoundedBorder {
+    border-radius: 0.75rem;
+}
+
+.newsTileSection {
+    width: 100%;
+}
+
+.newsTileSection .Stretch.sapMST {
+    width: 100%;
+    height: 16rem;
+}
+
+.myAppMFBContent {
+    border-radius: var(--_sap_f_Card_BorderRadius);
+}
+
+.sapMHeaderContainerAlign .sapMHdrCntrCntr.Horizontal .sapMHrdrCntrInner:not(div:first-of-type) {
+    margin-left: 0rem !important;
+}
+
+.sapMHeaderContainerAlign .sapMHdrCntrCntr.Horizontal .sapMHrdrCntrInner:first-of-type {
+    padding-left: 0rem !important;
+}
+
+.sapMHeaderContainerAlign .sapMHdrCntrCntr.Horizontal .sapMHrdrCntrInner:last-of-type {
+    padding-right: 0rem !important;
+}
+
+.sapTitlePadding {
+    padding-top: 0.313rem;
+}
+
+.sapUiNoPadding {
+    padding: 0 !important;
+}
+
+#idInterestsDlgToolbar {
+    position: sticky;
+    z-index: 100;
+    top: 0;
+}
+
+.manageSectionsDialog {
+    padding: 0.5rem;
+}
+
+.flexContainerCards {
+    overflow-y: hidden;
+}
+
+.flexContainerCards > .sapMFlexBoxScroll {
+    width: calc(100% - 1rem);
+}
+
+.dialogPanelTitle {
+    font-size: 14px !important;
+}
+
+.tileLayout.sapMGT.sapMGTIconMode.HighContrastTile {
+    background-color: transparent;
+}
+
+.sapFGLI.sapMGT.recentAppItem,
+.sapContrastPlus .tileLayout.sapMGT {
+    box-shadow: none;
+}
+
+.myhomeHBoxAlign {
+    gap: 1rem;
+}
+
+.noEntryWidth {
+    height: 20rem;
+}
+
+.myhomeSectionMarginTop {
+    margin-top: 0.75rem;
+}
+
+.myhomeSectionMarginBottom {
+    margin-bottom: 2.625rem;
+}
+
+.sapUiPagePadding > .sapUiScrollDelegate {
+    overflow-y: overlay !important;
+}
+
+.pagesPanel .sapMPanelContent {
+    padding: 0rem 0.5rem;
+}
+
+.pagesPanelItem {
+    padding: 0rem 0.5rem;
+}
+
+.insightsCardOverflowLayer {
+    background: -moz-linear-gradient(top, var(--sapList_Background) 0%, rgba(255, 255, 58, 0) 150%);
+    background: -webkit-linear-gradient(top, var(--sapList_Background) 0%, rgba(255, 255, 58, 0) 150%);
+    background: linear-gradient(to top, var(--sapList_Background) 0%, rgba(255, 255, 58, 0) 150%);
+    background-repeat: repeat-x;
+    border-bottom-left-radius: var(--_sap_f_Card_BorderRadius);
+    border-bottom-right-radius: var(--_sap_f_Card_BorderRadius);
+    justify-content: center;
+    align-items: center;
+}
+
+.insightsCardOverflowTop {
+    top: -33px;
+}
+
+/* To be moved to insights service */
+.insightsPreviewOverLaySize {
+    height: 2rem;
+    width: 17rem;
+}
+
+/* To be moved to insights service */
+.insightsPreviewCardOverLay {
+    height: 2rem;
+    width: 19rem;
+}
+
+.insightsPreviewOVPOverLayPositionSD {
+    top: -33px;
+}
+
+.insightsPreviewOVPOverLayPositionLS {
+    top: -33px;
+}
+
+.insightsColOverLayPositionSD {
+    top: -40px;
+}
+
+.insightsColOverLayPositionLS {
+    top: -32px;
+}
+
+.insightsPreviewOverLayLS {
+    top: -38px;
+}
+
+.semanticDateInsight input.sapMInputBaseInner {
+    pointer-events: none;
+}
+
+@media (max-width: 320px) {
+    .manageSectionsTable td.sapMListTblCell {
+        padding-left: 0.5rem;
+    }
+    .insightsListItem .sapMListTblCell {
+        padding-left: 0.25rem;
+    }
+    .manageTilesHeaderHeight {
+        height: 14%;
+    }
+    .manageTilesContentHeight {
+        height: 86%;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 599px) {
+    .manageTilesHeaderHeight {
+        height: 14%;
+    }
+    .manageTilesContentHeight {
+        height: 86%;
+    }
+    .layoutCheckbox {
+        margin-left: 0.5rem;
+    }
+    .sapMHoxMargin {
+        margin-top: 0.25rem;
+    }
+    .myhomeHBoxAlign {
+        gap: 0.5rem;
+    }
+    .sapMGTIconMode.sapMTileSmallPhone.sapMGT.sapMGTOneByOne .sapMGTHdrContent {
+        width: auto;
+        min-width: 2rem;
+    }
+    .sapUiPagePadding > .sapMPageEnableScrolling.sapUiScrollDelegate {
+        padding: 1.5rem 0.5rem 0 0.5rem;
+    }
+    .sapMNewsFlex > .sapMFlexItem {
+        width: 100%;
+    }
+    .sapMFavorites .sapMFlexItem {
+        width: calc(50% - 0.532rem);
+    }
+    .myhomeSectionMarginTop {
+        margin-top: 0.25rem;
+    }
+    .myhomeSectionMarginBottom {
+        margin-bottom: 1.625rem;
+    }
+    .myhomeSectionMarginBottomToDoNoCard {
+        margin-bottom: 1.25rem;
+    }
+    .sapMHeaderContainerMarginBottom {
+        margin-bottom: 0.813rem;
+    }
+    .newsTileSection .Stretch.sapMST {
+        height: 11rem;
+    }
+    .newsTileSection .Stretch .sapMTileCnt.News .sapMNwC .sapMNwCSbh .sapMFT {
+        height: 1rem;
+    }
+    .sapMHeaderContainerToDoAlign .sapMHdrCntrCntr.Horizontal .sapMHrdrCntrInner {
+        margin: 0rem;
+    }
+    .myAppMFBContent .sapMPanelContent {
+        padding: 1rem 1rem 1rem 1rem;
+    }
+    .tileLayout .sapMGT.sapMGTTwoByHalf {
+        padding-left: 0rem;
+    }
+    .tileLayout.sapMTileSmallPhone.sapMGT.TwoByHalf {
+        height: 3rem;
+    }
+    .tileLayout.TwoByHalf.sapMGTIconMode.sapMTileSmallPhone .sapMGTTwoByHalfIcon .sapMGTileBadge {
+        top: 1.25rem;
+    }
+    .tileLayout .sapMText {
+        font-weight: normal;
+    }
+    .noCardsBorder .sapMPanelContent {
+        border-bottom: none;
+    }
+    .manageSectionsTable td.sapMListTblCell {
+        padding-left: 0.5rem;
+    }
+    .insightsListItem .sapMListTblCell {
+        padding-left: 0.25rem;
+    }
+    .insightsListMargin .insightsDndIcon {
+        margin: 0 -0.1rem;
+    }
+    .advancePadding{
+        padding: 1rem 1rem 0rem 1rem;
+    }
+    .resetButtonPadding{
+        padding: 0rem 1rem 1rem 1rem !important;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 1023px) {
+    .layoutCheckbox {
+        margin-left: 0.75rem;
+    }
+    .sapMHoxMargin {
+        margin-top: 0.75rem;
+    }
+    .sapMIconTabBarAlign {
+        width: auto;
+    }
+    .sapUiPagePadding > .sapMPageEnableScrolling.sapUiScrollDelegate {
+        padding: 1.5rem 2rem 0rem 2rem;
+    }
+    .myhomeSectionMarginTopToDoInsight {
+        margin-top: 0.25rem;
+    }
+    .myhomeSectionMarginBottom {
+        margin-bottom: 2.625rem;
+    }
+    .myhomeSectionMarginBottomToDoNoCard {
+        margin-bottom: 1.25rem;
+    }
+    .sapMHeaderContainerMarginBottom {
+        margin-bottom: 0.875rem;
+    }
+    .newsTileSection {
+        width: calc(100vw - 64px);
+    }
+    .newsTileSection .Stretch.sapMST {
+        width: calc(100vw - 64px);
+        height: 16rem;
+    }
+    .sapMHeaderContainerToDoAlign .sapMHdrCntrCntr.Horizontal .sapMHrdrCntrInner {
+        padding: 0rem 0.625rem 0rem 0.625rem;
+        margin: 0rem;
+    }
+    .sapMFavorites .sapMPagesLoader > .sapMFlexItem {
+        width: calc(25% - 1.5rem);
+    }
+    .sapMGTIconMode.sapMTileSmallPhone.sapMGT.sapMGTOneByOne .sapMGTHdrContent {
+        width: auto;
+    }
+    .insightsListItem .sapMListTblHighlightCol + .sapMListTblHeaderCell,
+    .sapMListTblHighlightCell + .sapMListTblCell {
+        padding-left: 1.25rem;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .layoutCheckbox {
+        margin-left: 0.75rem;
+    }
+    .sapUiPagePadding > .sapMPageEnableScrolling.sapUiScrollDelegate {
+        padding: 1.5rem 2rem 0rem 2rem;
+    }
+    .myhomeSectionMarginTopToDoInsight {
+        margin-top: 0.25rem;
+    }
+    .myhomeSectionMarginBottom {
+        margin-bottom: 2.625rem;
+    }
+    .myhomeSectionMarginBottomToDoNoCard {
+        margin-bottom: 1.25rem;
+    }
+    .sapMHeaderContainerMarginBottom {
+        margin-bottom: 0.875rem;
+    }
+    .newsTileMaxWidth {
+        max-width: 39.75rem;
+    }
+    .sapMNewsFlex > .sapMFlexItem:first-child:not(:only-child) {
+        max-width: 40.75rem;
+    }
+    .sapMIconTabBarAlign {
+        padding-top: 0.125rem;
+    }
+    .sapMHeaderContainerToDoAlign .sapMHdrCntrCntr.Horizontal .sapMHrdrCntrInner {
+        padding: 0rem 0.5rem 0rem 0.5rem;
+        margin: 0rem;
+    }
+    .sapMFavorites .sapMPagesLoader > .sapMFlexItem {
+        width: calc(25% - 1rem);
+    }
+    .sapMGTIconMode.sapMTileSmallPhone.sapMGT.sapMGTOneByOne .sapMGTHdrContent {
+        width: auto;
+    }
+    .sapUiPagePadding > .sapMPageEnableScrolling.sapUiScrollDelegate > .sapMFlexBox > .sapMFlexItem:last-child {
+        margin-bottom: 4rem;
+    }
+    .insightsListItem .sapMListTblHighlightCol + .sapMListTblHeaderCell,
+    .sapMListTblHighlightCell + .sapMListTblCell {
+        padding-left: 1.25rem;
+    }
+}
+
+@media (min-width: 1440px) {
+    .layoutCheckbox {
+        margin-left: 0.75rem;
+    }
+    .sapUiPagePadding > .sapMPageEnableScrolling.sapUiScrollDelegate {
+        padding: 1.5rem 3rem 0rem 3rem;
+    }
+    .myhomeSectionMarginTopToDoInsight {
+        margin-top: 0.25rem;
+    }
+    .myhomeSectionMarginBottom {
+        margin-bottom: 2.625rem;
+    }
+    .myhomeSectionMarginBottomToDoNoCard {
+        margin-bottom: 1.25rem;
+    }
+    .sapMIconTabBarAlign {
+        padding-top: 0.125rem;
+    }
+    .sapMHeaderContainerMarginBottom {
+        margin-bottom: 0.875rem;
+    }
+    .sapUiPagePadding > .sapMPageEnableScrolling.sapUiScrollDelegate > .sapMFlexBox > .sapMFlexItem:last-child {
+        margin-bottom: 4rem;
+    }
+    .newsTileMaxWidth {
+        max-width: 39.75rem;
+    }
+    .sapMNewsFlex > .sapMFlexItem:first-child:not(:only-child) {
+        max-width: 40.75rem;
+    }
+    .sapMHeaderContainerToDoAlign .sapMHdrCntrCntr.Horizontal .sapMHrdrCntrInner {
+        padding: 0rem 0.5rem 0rem 0.5rem;
+        margin: 0rem;
+    }
+    .sapMFavorites .sapMPagesLoader > .sapMFlexItem {
+        width: calc(25% - 1.5rem);
+    }
+    .sapMGTIconMode.sapMTileSmallPhone.sapMGT.sapMGTOneByOne .sapMGTHdrContent {
+        width: auto;
+    }
+    .insightsListItem .sapMListTblHighlightCol + .sapMListTblHeaderCell,
+    .sapMListTblHighlightCell + .sapMListTblCell {
+        padding-left: 1.25rem;
+    }
+}
+
+.manageSectionsTable .sapMListTblCell {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.sapUiFlex.manageSectionsTable tr.sapMListTblRow {
+    height: 5rem;
+}
+
+.TwoByHalf.sapMGTIconMode.sapThemeBrand-asOutlineColor {
+    outline: 0.125rem solid;
+}
+
+.TwoByHalf.sapMGTIconMode.sapThemeBrand-asOutlineColor .sapMGTMoreIcon {
+    visibility: visible;
+}
+
+.loaderContainer .loaderText {
+    white-space: normal;
+}
+
+.toDoMessageCard .sapMIllustratedMessage.sapMIllustratedMessage-Base figcaption,
+.toDoMessageCard .sapMIllustratedMessageMainContent figcaption {
+    max-width: 100%;
+}
+
+.todoHide,
+.sapUiITBHide .sapMITH {
+    display: none;
+}
+
+.editIntrestWrapperFlex {
+    padding: 1rem;
+    padding-bottom: 0;
+}
+
+.editIntrestDetailsWrapperFlex {
+    padding: 1rem;
+    padding-left: 0;
+}
+
+.editIntrestDetailsWrapperFlex .editInterestLabel {
+    color: var(--sapTextColor);
+    font-size: 0.875rem;
+}
+
+.tilesDndIcon {
+    display: block;
+    position: relative;
+    margin: 0 -0.5rem;
+    left: 0rem;
+    font-size: 14px;
+}
+
+.insightsDndIcon {
+    display: block;
+    position: absolute;
+    margin: 0 -0.5rem;
+    top: -7px;
+    left: 0rem;
+    font-size: 14px;
+}
+
+.sapUiSizeCozy .layoutCheckbox {
+    margin: 0 -0.1rem;
+}
+
+.layoutTextMsg {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-right: 0.75rem;
+    padding-left: 1rem;
+}
+
+.sapUiSizeCozy .insightsDndIcon {
+    top: 30%;
+}
+
+.insightsListItem .editInsightAppsHBox {
+    margin-left: 1.5rem;
+}
+
+.insightTilesList .insightsDndIcon {
+    margin: 0.6rem 0.5rem;
+}
+
+.insightTilesList .sapMObjectIdentifierTitle .sapMText, .sectionTitle {
+    font-size: 0.875rem;
+}
+
+.objectIdentifierMargin .sapMObjectIdentifierTextBellow {
+    margin-top: 0.5rem;
+}
+
+.myhomeInsightHeader {
+    border-bottom: 1px solid var(--sapUiGroupTitleBorderColor);
+    padding-bottom: 0.5rem;
+}
+
+.pagesHeaderTitle {
+    font-size: 1rem;
+}
+
+.myhomeLayoutHeader {
+    border-bottom: 0.0625rem solid var(--sapUiGroupTitleBorderColor);
+}
+
+#copyCardDialog .sapMDialogScroll {
+    height: 100%;
+}
+
+.editInsightsCardsListHBox > .sapMFlexItem:first-child:not(:only-child) {
+    min-width: 0 !important;
+}
+
+.menuPopoverList .sapMLIB {
+    border-bottom: none;
+}
+
+.editInsightsCardsListHBox .sapMTextMaxWidth {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.appsPreviewCard .sapMHrdrCntrInner {
+    padding: 0 2rem 2rem 2rem;
+}
+
+#idEditInsightsDialog .sapMDialogSubHeader {
+    height: 3.25rem;
+}
+
+/* remove to do section borders */
+.toDoIconTabBar .sapMITBContainerContent,
+.toDoIconTabBar .sapMITBContent {
+    border: none;
+}
+
+.removeBorder .sapMITBContainerContent,
+.removeBorder .sapMITBContent {
+    border: none;
+}
+
+.tilesBoxShadow .sapMHdrCntrItemCntr.sapMHrdrCntrInner {
+    height: 11.5rem;
+    margin-top: 0.5rem;
+}
+
+.cardsBoxShadow .sapMHdrCntrItemCntr.sapMHrdrCntrInner {
+    height: 25.5rem;
+    margin-top: 0.5rem;
+}
+
+.addBorder {
+    border: 0.25rem solid var(--sapUiTileBorderColor);
+}
+
+.toDoCardHeight .sapMHdrCntrCntr.Horizontal.sapMHdrCntrBGTransparent {
+    height: inherit;
+}
+
+.toDoCardsGap {
+    gap: 1rem;
+}
+
+.alignItemBottom {
+    bottom: 0.3rem;
+}
+
+.settingsList .sapMSLIDiv {
+    align-items: center;
+}
+
+.scrollContainerPaddingLeft {
+    padding-left: 0.125rem;
+}
+
+.myHomeAppsPanelBorder .sapMPanelWrappingDivTb:not(.sapMPanelWrappingDivTbExpanded) {
+    border: none;
+}
+
+.myHomeAppsPanelBorder.sapMPanel {
+    border-radius: 1rem;
+}
+
+.sapContrastPlus .myHomeAppsGroupedPanel.sapMPanel .sapMTB {
+    background-color: var(--sapUiToolbarBackground) !important;
+}
+
+/* Insights CSS */
+.previewPopoverBackground .sapMPopoverCont {
+    background-color: var(--sapUiGlobalBackgroundColor);
+}
+
+.sectionDetailContainer {
+    padding: 1rem;
+}
+
+.refreshBtnMargin {
+    margin-right: 3px;
+}
+.todoViewAllMarginn {
+    margin-right: 19px;
+}
+
+.insightsListItem .sapMListTblCell .sapMVBox .sapMHBox .sapMFlexItem .sapMText {
+    color: var(--sapUiObjectHeaderSubtitleTextColor);
+}
+
+.newsListItem {
+    padding: 0.5rem;
+    margin: 1rem;
+    border: none;
+}
+
+.dialogListItemPadd {
+    padding: 0.5rem;
+}
+
+.newsListItemContainer {
+    gap: 0.5rem;
+}
+
+.highlightTileBg.highlightApp,
+.sapContrastPlus .highlightTileBg.highlightApp {
+    background-color: var(--sapUiListSelectionBackgroundColor);
+}
+
+.newsSlideFlexGap {
+    gap: 1rem;
+}
+
+.expandedPadding .cardsExpandedPadding {
+    padding-bottom: 2rem;
+}
+
+/* Animation */
+
+.hideFromView {
+    visibility: hidden;
+    transition: all 1s;
+    transform: translateX(110%);
+}
+
+.absolutePosition {
+    position: absolute;
+    top: 0;
+}
+
+.slide_out_left {
+    transition: all 1s;
+    transform: translateX(-110%);
+}
+
+.slide_in_left {
+    transition: all 1s;
+    transform: translateX(0);
+}
+
+.slide_out_right {
+    transition: all 1s;
+    transform: translateX(110%);
+}
+
+.slide_in_right {
+    transition: all 1s;
+    transform: translateX(0);
+}
+
+.toDoCardsContainer .TwoByOne.sapMGTActionMode .sapMGTFocusDiv,
+.toDoCardsContainer .TwoByOne.sapMGTActionMode {
+    border-radius: var(--_sap_f_Card_BorderRadius) !important;
+}
+
+.myhomeInterestHeaderMarginBottom {
+    margin-bottom: 0.75rem;
+}
+
+.myhomeInterestHeaderMarginTop {
+    margin-top: 0.25rem;
+}
+
+.recentAppList .sapMLIB{
+    padding: 0rem;
+}
+
+.recentAppListHeader .sapMLIB .sapMGHLI{
+    padding: 0rem;
+    border-bottom: 1px solid var(--sapUiGroupTitleBorderColor);
+}
+
+.recentAppsGroupHeader .sapMLIB .sapMGHLI{
+    padding-top: 0rem;
+}
+
+.iconRoundBorder {
+    border-radius: 0.75rem;
+}
+.msgBoxWidth {
+    width: 20rem;
+}
+.insightTiles .sapMGT.TwoByOne{
+    width: 100%;
+}
+.pagesBottomBorder {
+    border-bottom: 0.0625rem solid var(--sapUiGroupTitleBorderColor);
+    width: calc(100% - 2rem);
+    margin-left: 1rem;
+}

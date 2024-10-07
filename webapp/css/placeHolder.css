@@ -1,0 +1,1459 @@
+/*---------------------------------------
+      INSIGHTS CARD PLACEHOLDER CSS
+---------------------------------------*/
+:root{
+    --OpacityTableTitle: 0.66;
+}
+
+.plResponsivePadding{
+    width: calc(100% - 6rem);
+}
+
+.plCols4 > *{
+    width:calc(25% - 2rem);
+}
+
+.plPaddingTop{
+    padding-top: 1rem;
+}
+
+.plTextAlignStart{
+    text-align: start;
+}
+.plTextAlignCenter{
+    text-align: center;
+}
+.plTextAlignEnd{
+    text-align: end;
+}
+
+.plVerticalAlignTop{
+    vertical-align: top;
+    padding-top: 1rem;
+}
+.plVerticalAlignMiddle{
+    vertical-align: middle;
+}
+.plVerticalAlignBottom{
+    vertical-align: bottom;
+}
+
+
+
+.plVerticalRepeater{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: flex-start;
+    width: -moz-fit-content;
+    width: fit-content;
+}
+
+.plVerticalRepeater.plTextAlignCenter{
+    align-items: center;
+}
+
+.plVerticalRepeater.plTextAlignEnd{
+    align-items: flex-end;
+}
+
+.plVerticalRepeater.plVerticalAlignMiddle{
+    align-content: center;
+}
+
+.plVerticalRepeater.plVerticalAlignBottom{
+    align-content: flex-end;
+}
+
+
+
+
+.plHorizontalContent > *{
+    display: inline-block;
+}
+
+.plHorizontalContent > .plVerticalRepeater,
+.plHorizontalContent > .plHorizontalRepeater{
+    display: flex;
+}
+
+.plHorizontalContent > *:not(:last-child){
+    margin-left: 0;
+}
+.plHorizontalContent > *:not(:last-child){
+    margin-right: 2rem;
+}
+.plHorizontalContent.plTextAlignEnd > *:not(:last-child){
+    margin-right: 0;
+}
+.plHorizontalContent.plTextAlignEnd > *:not(:first-child){
+    margin-left: 2rem;
+}
+
+
+
+.plVerticalContent > *{
+    display: block;
+}
+
+.plVerticalContent > *:not(:last-child){
+    margin-bottom: 1rem;
+}
+
+.plVerticalContent.plVerticalAlignBottom > *:not(:first-child){
+    margin-top: 1rem;
+}
+
+
+
+.plText{
+    border-radius: 0.25rem;
+}
+.plTextWeightS{
+    height: 0.5rem;
+}
+.plTextWeightM{
+    height: 0.75rem;
+}
+.plTextWeightL{
+    height: 0.875rem;
+}
+.plTextWidthS{
+    width: 75px;
+}
+.plTextWidthM{
+    width: 120px;
+}
+.plTextWidthL{
+    width: 225px;
+}
+.plTextWidthXL{
+    width: 275px;
+}
+
+.plAction{
+    width:1.5rem;
+    height:1.5rem;
+    border-radius: 50%;
+}
+.plAvatarSizeS{
+    width:2rem;
+    height:2rem;
+}
+.plAvatarSizeM{
+    width:5rem;
+    height:5rem;
+}
+.plAvatarShapeCircle{
+    border-radius: 50%;
+}
+
+.plBarChart{
+    display: inline-block;
+}
+
+.plVerticalBarChart,
+.plHorizontalBarChart{
+    padding-right: 1rem;
+    white-space: nowrap;
+}
+
+.plBarChartWithMeasure .plVerticalBarChart,
+.plBarChartWithMeasure .plHorizontalBarChart{
+    padding-right: 3rem;
+}
+
+.plBarChart .plHorizontalRepeaterItem,
+.plHorizontalBarChart .plVerticalRepeaterItem{
+    border-radius: 0.25rem;
+}
+.plHorizontalContent > .plVerticalBar{
+    margin: 0 0.55rem;
+}
+.plVerticalBarWeightS{
+    width: 0.5rem;
+}
+.plVerticalBarWeightM{
+    width: 0.75rem;
+}
+.plVerticalBarWeightL{
+    width: 0.875rem;
+}
+.plVerticalBarHeightS{
+    height: 75px;
+}
+.plVerticalBarHeightM{
+    height: 120px;
+}
+.plVerticalBarHeightL{
+    height: 225px;
+}
+.plVerticalBarHeightXL{
+    height: 275px;
+}
+
+.plBarChartLegendContainer{
+    padding-bottom: 2rem;
+}
+
+.plBarChartLegendItem:not(:last-child){
+    margin-bottom: 0.25rem;
+}
+
+.plChartSum{
+    line-height: 0.125rem;
+}
+
+.plChartHorMeasure{
+    position: relative;
+}
+.plChartVertMeasure{
+    position: relative;
+}
+
+.plBarChartWithMeasure .plChartHorMeasure:after{
+    right: 2.5rem;
+}
+
+.plBarChartWithMeasure .plVerticalBarChart.plChartVertMeasure{
+    margin-right: 1rem;
+}
+
+.plVerticalBarChart.plVAlignInline.plChartHorMeasure{
+    margin-top: 0;
+}
+
+.plVerticalBarChart.plChartVertMeasure:before{
+    top:-0.5rem;
+}
+
+.plHorizontalBarChart.plChartHorMeasure{
+    padding-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.plHorizontalBarChart.plVAlignInline.plChartHorMeasure{
+    margin-top: 0;
+}
+
+.plHorizontalBarChart.plChartVertMeasure{
+    margin-right: 1rem;
+}
+
+.plHorizontalBarChart.plChartVertMeasure:before{
+    top:-0.5rem;
+}
+
+.plHorizontalBarChart.plChartHorMeasure:after{
+    right: 0;
+}
+
+.plBarChartWithMeasure .plHorizontalBarChart.plChartHorMeasure:after{
+    right: 2rem;
+}
+
+.plChartSum .plHorizontalRepeaterItem{
+    height: 5px!important;
+}
+
+
+.plDonutChart{
+    width:4rem;
+    height:4rem;
+    border-radius: 50%;
+    position: relative;
+}
+
+.plDonutChartInnerCircle{
+    width:2rem;
+    height:2rem;
+    margin: 1rem;
+    border-radius: 50%;
+    background: var(--sapBaseColor);
+    position: absolute;
+    top:0;
+    left:0;
+}
+
+.plDonutChartCutOut{
+    width:2rem;
+    height:2rem;
+    border-radius: 50% 0 0 0;
+    background: var(--sapBaseColor);
+    position: absolute;
+    top:0;
+    left:0;
+}
+
+
+.plOVPCardContainer{
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 22.5rem;
+    overflow: hidden;
+    align-items: flex-start;
+}
+
+.plOVPCard{
+    width: calc(20rem - 2rem);
+    margin: 0 1rem 2rem 0;
+    box-sizing: border-box;
+    background: var(--sapUiTileBackground);
+	box-shadow: var(--_sap_f_Card_BoxShadow);
+	border-radius: var(--_sap_f_Card_BorderRadius);
+	border: 0.0625rem solid var(--sapUiTileBorderColor);
+}
+
+.plOVPCardVersion2{
+    width:calc(20rem - 2rem + 20rem);
+}
+
+.plOVPCardHeader{
+    padding:1rem;
+    border-bottom:1px solid var(--sapContent_ImagePlaceholderBackground);
+}
+
+.plOVPCardHeader .plHorizontalContent > *:not(:last-child){
+    margin-right: 1rem;
+}
+
+.plOVPCardContent{
+    padding:1rem;
+}
+
+.plOVPCardContentContainer{
+    width: 100%;
+}
+
+.plOVPCardVersion2 .plOVPCardContent > .plHorizontalLayout > *{
+    width: calc(50% - 1rem);
+}
+
+
+.plShellBar{
+    background: var(--sapShellColor);
+    height: 3rem;
+    line-height: 2.825rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.plShellBar > * > *{
+    vertical-align: middle;
+}
+
+
+/* .plShellBar .plLogo{
+    width: 3.5rem;
+    height: 1.75rem;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--Shimmer1) 0%, var(--Shimmer1) 65%, transparent 66%, transparent 100%);
+    background-repeat: no-repeat;
+} */
+
+.plHeader{
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    background: var(--sapBaseColor);
+}
+
+/*.plHeader .plText,*/
+/*.plHeader .plAction,*/
+/*.plHeader .plAvatar{*/
+/*	background: var(--sapContent_ImagePlaceholderBackground2);*/
+/*}*/
+
+.plHeaderTitle{
+    height: 3rem;
+    line-height: 2.825rem;
+    display: flex;
+    justify-content: space-between;
+}
+.plHeaderTitle > * > *{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.plHeaderTitleWithSubtitle{
+    height:4.25rem;
+}
+
+.plHeaderSubTitleText{
+    display: block;
+}
+
+.plHeaderContent{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.plAnchorBar{
+    padding-top: 1rem;
+    padding-bottom: 1px;
+}
+
+.plContent{
+    background: var(--sapBaseColor);
+}
+
+.plObjectPageSection{
+    padding-top: 1rem;
+    position: relative;
+}
+
+.plVerticalContent > *:not(:last-child).plObjectPageSectionTitle{
+    margin-bottom: 3rem;
+}
+
+.plObjectPageSectionTitle:after{
+    content: ".";
+    color:transparent;
+    position: absolute;
+    top: 3rem;
+    left:-1rem;
+    right:-1rem;
+    height:2px;
+    background: var(--sapList_HeaderBackground);
+}
+
+
+
+
+.plTable{
+    padding: 2rem 0;
+}
+.plTableTitle{
+    background: var(--sapContent_ImagePlaceholderBackground);
+    opacity:var(--OpacityTableTitle);
+}
+.plTableColmnHeaderRow{
+    background: var(--sapList_HeaderBackground);
+    margin-left: -1rem;
+    margin-right: -1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.plTableCell{
+    height: 2rem;
+    line-height: 2rem;
+    width:calc(100% / 8);
+}
+.plTableColmnHeaderCell{
+    height: 2.5rem;
+    line-height: 2.5rem;
+    width:calc(100% / 8);
+}
+.plTableText{
+    display: inline-block;
+}
+.plHorizontalContent > *:not(:last-child).plTableColmnHeaderCell,
+.plHorizontalContent > *:not(:last-child).plTableCell{
+    margin: 0
+}
+
+
+.plText,
+.plAction,
+.plVerticalBar,
+.plAvatar,
+.plDonutChart{
+    -webkit-animation-duration: 2.5s;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-name: placeHolderShimmer;
+    -webkit-animation-timing-function: linear;
+    background-repeat: no-repeat;
+    background-size: 900px 104px;
+}
+
+.plVerticalBar:first-of-type {
+    margin-left: 0px;
+}
+
+.plChartVertMeasure:before{
+    background-size: 104px 900px;
+}
+
+.plVerticalBar{
+    background-size: 104px 900px;
+}
+
+@keyframes placeHolderShimmer{
+    0% {
+        background-position-x: 100%;
+    }
+    100% {
+        background-position-x:  0%;
+    }
+}
+
+
+.sapUiContainer-Wide .plSmallestVisibleSizeXXL,
+.sapUiContainer-Wide .plSmallestVisibleSizeXL{
+    display: none;
+}
+
+.sapUiContainer-Wide .plCols4 > *{
+    width:calc((100% / 2) - 2rem);
+}
+
+.sapUiContainer-Wide .plTableColmnHeaderCell,
+.sapUiContainer-Wide .plTableCell{
+    width:calc(100% / 4);
+}
+
+@media (min-width: 1024px) and (max-width: 2559px) {
+    .plSmallestVisibleSizeXXL,
+    .plSmallestVisibleSizeXL{
+        display: none;
+    }
+
+    .plCols4 > *{
+        width:calc((100% / 2) - 2rem);
+    }
+
+    .plTableColmnHeaderCell,
+    .plTableCell{
+        width:calc(100% / 4);
+    }
+
+    .plPHPCardVersion3.plSmallestVisibleSizeL:last-child {
+        margin: 1rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .plPHPCardVersion3.plSmallestVisibleSizeL .plHorizontalLayout>* {
+        width: 5rem;
+    }
+}
+
+@media (min-width: 1440px) {
+    .plPHPCardVersion3.plSmallestVisibleSizeL .plHorizontalLayout>* {
+        width: 8.55rem;
+    }
+}
+
+@media (min-width: 2560px) {
+    .plPHPCardVersion3.plSmallestVisibleSizeL .plHorizontalLayout>* {
+        width: 12.75rem;
+    }
+}
+
+.sapUiContainer-Medium .plSmallestVisibleSizeXXL,
+.sapUiContainer-Medium .plSmallestVisibleSizeXL,
+.sapUiContainer-Medium .plSmallestVisibleSizeL{
+    display: none;
+}
+
+.sapUiContainer-Medium .plResponsivePadding{
+    width: calc(100% - 4rem);
+}
+
+.sapUiContainer-Medium .plCols4 > *{
+    width:calc((100% / 2) - 2rem);
+}
+
+.sapUiContainer-Medium .plTableColmnHeaderCell,
+.sapUiContainer-Medium .plTableCell{
+    width:calc(100% / 3);
+}
+
+@media (min-width: 600px) and (max-width: 1023px) {
+    .plSmallestVisibleSizeXXL,
+    .plSmallestVisibleSizeXL,
+    .plSmallestVisibleSizeL{
+        display: none;
+    }
+
+    .plResponsivePadding{
+        width: calc(100% - 4rem);
+    }
+
+    .plCols4 > *{
+        width:calc((100% / 2) - 2rem);
+    }
+
+    .plTableColmnHeaderCell,
+    .plTableCell{
+        width:calc(100% / 3);
+    }
+}
+
+
+.sapUiContainer-Narrow .plSmallestVisibleSizeXXL,
+.sapUiContainer-Narrow .plSmallestVisibleSizeXL,
+.sapUiContainer-Narrow .plSmallestVisibleSizeL,
+.sapUiContainer-Narrow .plSmallestVisibleSizeM{
+    display: none;
+}
+
+.sapUiContainer-Narrow .plResponsivePadding{
+    width: calc(100% - 2rem);
+}
+
+.sapUiContainer-Narrow .plCols4 > *{
+    width:calc(100% - 1rem);
+}
+
+.sapUiContainer-Narrow .plTableColmnHeaderCell,
+.sapUiContainer-Narrow .plTableCell{
+    width:100%
+}
+
+@media (max-width: 599px) {
+    .plSmallestVisibleSizeXXL,
+    .plSmallestVisibleSizeXL,
+    .plSmallestVisibleSizeL,
+    .plSmallestVisibleSizeM{
+        display: none;
+    }
+
+    .plResponsivePadding{
+        width: calc(100% - 2rem);
+    }
+
+    .plCols4 > *{
+        width:calc(100% - 1rem);
+    }
+
+    .plTableColmnHeaderCell,
+    .plTableCell{
+        width:100%
+    }
+
+    .plVerticalContent > *:not(:last-child).plSectionMarginBottom {
+        margin-bottom: 1.625rem;
+    }
+}
+
+/*---------------------------------------
+        HOMEPAGE PLACEHOLDER CSS
+---------------------------------------*/
+.plContent.plResponsivePadding {
+    width: 100%;
+}
+
+.plCols4>* {
+    width: calc(25% - 2rem);
+}
+
+.plPaddingTop {
+    padding-top: 1rem;
+}
+
+.plTextAlignStart {
+    text-align: start;
+}
+
+.plTextAlignCenter {
+    text-align: center;
+}
+
+.plTextAlignEnd {
+    text-align: end;
+}
+
+.plResponsivePadding.plVerticalAlignTop,
+.plVerticalContent.plVerticalAlignTop,
+.plVerticalContent .plVerticalAlignTop {
+    padding-top: 0rem;
+}
+
+.plVerticalAlignTop {
+    vertical-align: top;
+}
+
+.plVerticalAlignMiddle {
+    vertical-align: middle;
+}
+
+.plVerticalAlignBottom {
+    vertical-align: bottom;
+}
+
+.plVerticalRepeater {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: flex-start;
+    width: -moz-fit-content;
+    width: fit-content;
+}
+
+.plVerticalRepeater.plTextAlignCenter {
+    align-items: center;
+}
+
+.plVerticalRepeater.plTextAlignEnd {
+    align-items: flex-end;
+}
+
+.plVerticalRepeater.plVerticalAlignMiddle {
+    align-content: center;
+}
+
+.plVerticalRepeater.plVerticalAlignBottom {
+    align-content: flex-end;
+}
+
+.plHorizontalContent>* {
+    display: inline-block;
+}
+
+.plHorizontalContent>.plVerticalRepeater,
+.plHorizontalContent>.plHorizontalRepeater {
+    display: flex;
+}
+
+.plHorizontalContent>*:not(:last-child) {
+    margin-left: 0;
+}
+
+.plHorizontalContent>*:not(:last-child) {
+    margin-right: 1rem;
+}
+
+.plHorizontalContent.plTextAlignEnd>*:not(:last-child) {
+    margin-right: 0;
+}
+
+.plHorizontalContent.plTextAlignEnd>*:not(:first-child) {
+    margin-left: 2rem;
+}
+
+.plVerticalContent>* {
+    display: block;
+}
+
+.plVerticalContent>*:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+.plVerticalContent.plVerticalAlignBottom>*:not(:first-child) {
+    margin-top: 1rem;
+}
+
+.plText {
+    border-radius: 0.25rem;
+}
+
+.plTextWeightS {
+    height: 0.5rem;
+}
+
+.plTextWeightM {
+    height: 0.75rem;
+}
+
+.plTextWeightL {
+    height: 0.875rem;
+}
+
+.plTextWidthS {
+    width: 75px;
+}
+
+.plTextWidthM {
+    width: 120px;
+}
+
+.plTextWidthL {
+    width: 225px;
+}
+
+.plTextWidthXL {
+    width: 275px;
+}
+
+.plAction {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+}
+
+.plAvatarSizeS {
+    width: 2rem;
+    height: 2rem;
+}
+
+.plAvatarSizeM {
+    width: 5rem;
+    height: 5rem;
+}
+
+.plAvatarShapeCircle {
+    border-radius: 50%;
+}
+
+.plBarChart {
+    display: inline-block;
+}
+
+.plVerticalBarChart,
+.plHorizontalBarChart {
+    padding-right: 1rem;
+    white-space: nowrap;
+}
+
+.plBarChartWithMeasure .plVerticalBarChart,
+.plBarChartWithMeasure .plHorizontalBarChart {
+    padding-right: 3rem;
+}
+
+.plBarChart .plHorizontalRepeaterItem,
+.plHorizontalBarChart .plVerticalRepeaterItem {
+    border-radius: 0.25rem;
+}
+
+.plHorizontalContent>.plVerticalBar {
+    margin: 0 0.55rem;
+}
+
+.plVerticalBarWeightS {
+    width: 0.5rem;
+}
+
+.plVerticalBarWeightM {
+    width: 0.75rem;
+}
+
+.plVerticalBarWeightL {
+    width: 0.875rem;
+}
+
+.plVerticalBarHeightS {
+    height: 75px;
+}
+
+.plVerticalBarHeightM {
+    height: 120px;
+}
+
+.plVerticalBarHeightL {
+    height: 225px;
+}
+
+.plVerticalBarHeightXL {
+    height: 275px;
+}
+
+.plBarChartLegendContainer {
+    padding-bottom: 2rem;
+}
+
+.plBarChartLegendItem:not(:last-child) {
+    margin-bottom: 0.25rem;
+}
+
+.plChartSum {
+    line-height: 0.125rem;
+}
+
+.plChartHorMeasure,
+.plChartVertMeasure {
+    position: relative;
+}
+
+.plChartVertMeasure:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 2px;
+    left: 0;
+    width: 2px;
+}
+
+.plChartHorMeasure:after {
+    content: "";
+    position: absolute;
+    bottom: 2px;
+    right: 0.5rem;
+    left: 0;
+    height: 2px;
+}
+
+.plBarChartWithMeasure .plChartHorMeasure:after {
+    right: 2.5rem;
+}
+
+.plBarChartWithMeasure .plVerticalBarChart.plChartVertMeasure {
+    margin-right: 1rem;
+}
+
+.plVerticalBarChart.plVAlignInline.plChartHorMeasure {
+    margin-top: 0;
+}
+
+.plVerticalBarChart.plChartVertMeasure:before {
+    top: -0.5rem;
+}
+
+.plHorizontalBarChart.plChartHorMeasure {
+    padding-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.plHorizontalBarChart.plVAlignInline.plChartHorMeasure {
+    margin-top: 0;
+}
+
+.plHorizontalBarChart.plChartVertMeasure {
+    padding-left: 0.5rem;
+    margin-right: 1rem;
+}
+
+.plHorizontalBarChart.plChartVertMeasure:before {
+    top: -0.5rem;
+}
+
+.plHorizontalBarChart.plChartHorMeasure:after {
+    right: 0;
+}
+
+.plBarChartWithMeasure .plHorizontalBarChart.plChartHorMeasure:after {
+    right: 2rem;
+}
+
+.plChartSum .plHorizontalRepeaterItem {
+    height: 5px !important;
+}
+
+
+.plDonutChart {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    position: relative;
+}
+
+.plDonutChartInnerCircle {
+    width: 2rem;
+    height: 2rem;
+    margin: 1rem;
+    border-radius: 50%;
+    background: var(--sapUiTileBackground);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.plDonutChartCutOut {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50% 0 0 0;
+    background: var(--sapUiTileBackground);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+.plOVPCardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.plOVPCard {
+    width: calc(20rem - 2rem);
+    margin: 0 2rem 2rem 0;
+    border: 1px solid var(--sapContent_ImagePlaceholderBackground);
+}
+
+.plOVPCardVersion2 {
+    width: calc(20rem - 2rem + 20rem);
+}
+
+.plOVPCardHeader {
+    padding: 1rem;
+    border-bottom: 1px solid var(--sapContent_ImagePlaceholderBackground);
+}
+
+.plOVPCardHeader .plHorizontalContent>*:not(:last-child) {
+    margin-right: 1rem;
+}
+
+.plOVPCardContent {
+    padding: 1rem;
+}
+
+.plOVPCardContentContainer {
+    width: 100%;
+}
+
+.plOVPCardVersion2 .plOVPCardContent>.plHorizontalLayout>* {
+    width: calc(50% - 1rem);
+}
+
+.plPHP,
+.plPHP .plContent {
+    background: var(--sapBackgroundColor);
+}
+
+.plContent>.plPHPCardHeaderText:first-child {
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+}
+
+.plVerticalContent .plPHPCardContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+}
+
+.plPHPCardContainerOverflowHidden {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.plPHPCardVersion1 {
+    width: 28%;
+    margin: 2rem 1rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    height: 8.75rem;
+    display: inline-block;
+    background: var(--sapUiTileBackground);
+}
+
+.plPHPCardVersion1:first-child {
+    margin-left: 0;
+}
+
+.plPHPCardVersion2 {
+    width: 50%;
+    margin: 1rem 1rem 1rem 0;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    height: 15rem;
+    display: inline-block;
+    background: var(--sapUiTileBackground);
+}
+
+.plPHPCardVersion2 .plPHPCardHeader {
+    height: 6rem;
+    border-radius: 0.5rem 0.5rem 0 0;
+    width: calc(100% + 2rem);
+    background: var(--sapContent_ImagePlaceholderBackground);
+    margin: -1rem -1rem 0 -1rem;
+}
+
+.plPHPCardVersion2 .plPHPCardContentContainer {
+    margin-bottom: 4rem;
+}
+
+.plPHPCardVersion2 .plPHPCardContentContainer .plText {
+    background-size: 2000px;
+}
+
+
+.plPHPCardVersion3 {
+    margin: 1rem 1rem 1rem 0;
+    height: 12rem;
+    display: inline-block;
+}
+
+.plPHPCardVersion3:last-child {
+    margin-right: 0;
+}
+
+.plPHPCardVersion3 .plHorizontalLayout>* {
+    border-radius: 0.5rem;
+    background: var(--sapUiTileBackground);
+    padding: 1.35rem 1rem;
+}
+
+.plPHPCardVersion3 .plHorizontalLayout>*>.plPHPCardContentItemContainer {
+    width: 100%;
+    align-items: center;
+}
+
+.plPHPCardVersion3 .plHorizontalLayout>*>.plPHPCardContentItemContainer .plPHPCardContentText {
+    margin-bottom: 0.5rem;
+}
+
+.plPHPCardVersion3 .plHorizontalLayout>*>.plPHPCardContentItemContainer .plPHPCardContentTextSquare {
+    width: 1.75rem;
+    height: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.plPHPCardVersion4 {
+    width: 100%;
+    margin: 1rem 0 1rem 0;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    height: 13rem;
+    display: inline-block;
+    background: var(--sapUiTileBackground);
+}
+
+.plPHPCardVersion4 .plPHPCardContentTextSquare {
+    width: 1.75rem;
+    height: 1.75rem;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 1.75rem;
+    margin: 0 1rem 1rem 0;
+}
+
+.plPHPCardVersion4 .plPHPCardContentTextLine:not(:last-child) {
+    margin-bottom: 0.25rem;
+}
+
+.plPHPCardVersion4 .plPHPCardContent .plHorizontalLayout {
+    display: flex;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.plPHPCardVersion4 .plPHPCardContent .plVerticalLayout {
+    width: 100%;
+    margin-right: 3rem;
+}
+
+.plPHPCardVersion4 .plPHPCardContent .plVerticalLayout:last-child {
+    margin-right: 0;
+}
+
+
+.plPHPCardContentContainer {
+    padding-top: 1rem;
+    width: 100%;
+}
+
+.plPHPCardContent .plPHPCardContentContainer {
+    padding-top: 1rem;
+    width: 100%;
+}
+
+.plShellBar {
+    background: var(--sapShellColor);
+    height: 3rem;
+    line-height: 2.825rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.plShellBar>*>* {
+    vertical-align: middle;
+}
+
+
+.plShellBar .plLogo {
+    width: 3.5rem;
+    height: 1.75rem;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--Shimmer1) 0%, var(--Shimmer1) 65%, transparent 66%, transparent 100%);
+    background-repeat: no-repeat;
+}
+
+.plHeader {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    background: var(--sapUiTileBackground);
+}
+
+.plHeaderTitle {
+    height: 3rem;
+    line-height: 2.825rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.plHeaderTitle>*>* {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.plHeaderTitleWithSubtitle {
+    height: 4.25rem;
+}
+
+.plHeaderSubTitleText {
+    display: block;
+}
+
+.plHeaderContent {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.plAnchorBar {
+    padding-top: 1rem;
+    padding-bottom: 1px;
+}
+
+.plContent {
+    background: var(--sapBackgroundColor);
+}
+
+.plObjectPageSection {
+    padding-top: 1rem;
+    position: relative;
+}
+
+.plVerticalContent>*:not(:last-child).plObjectPageSectionTitle {
+    margin-bottom: 3rem;
+}
+
+.plObjectPageSectionTitle:after {
+    content: ".";
+    color: transparent;
+    position: absolute;
+    top: 3rem;
+    left: -1rem;
+    right: -1rem;
+    height: 2px;
+    background: var(--sapList_HeaderBackground);
+}
+
+.plTable {
+    padding: 2rem 0;
+}
+
+.plTableTitle {
+    background: var(--sapContent_ImagePlaceholderBackground);
+    opacity: var(--OpacityTableTitle);
+}
+
+.plTableColmnHeaderRow {
+    background: var(--sapList_HeaderBackground);
+    margin-left: -1rem;
+    margin-right: -1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.plTableCell {
+    height: 2rem;
+    line-height: 2rem;
+    width: calc(100% / 8);
+}
+
+.plTableColmnHeaderCell {
+    height: 2.5rem;
+    line-height: 2.5rem;
+    width: calc(100% / 8);
+}
+
+.plTableText {
+    display: inline-block;
+}
+
+.plHorizontalContent>*:not(:last-child).plTableColmnHeaderCell,
+.plHorizontalContent>*:not(:last-child).plTableCell {
+    margin: 0
+}
+
+.plChartVertMeasure:before {
+    background-size: 104px 1000px;
+}
+
+.plVerticalBar {
+    background-size: 104px 1000px;
+}
+
+@media (min-width: 2560px) and (max-width: 3839px) {
+    .plSmallestVisibleSizeXXL {
+        display: none;
+    }
+
+    .plCols4>* {
+        width: calc((100% / 3) - 2rem);
+    }
+
+    .plTableColmnHeaderCell,
+    .plTableCell {
+        width: calc(100% / 6);
+    }
+
+    .plPHPCardVersion1 {
+        width: 25%;
+    }
+
+    .plPHPCardVersion2 {
+        width: 38rem;
+    }
+}
+
+.sapUiContainer-Wide .plSmallestVisibleSizeXXL,
+.sapUiContainer-Wide .plSmallestVisibleSizeXL {
+    display: none;
+}
+
+.sapUiContainer-Wide .plCols4>* {
+    width: calc((100% / 2) - 2rem);
+}
+
+.sapUiContainer-Wide .plTableColmnHeaderCell,
+.sapUiContainer-Wide .plTableCell {
+    width: calc(100% / 4);
+}
+
+@media (min-width: 1024px) and (max-width: 2559px) {
+
+    .plSmallestVisibleSizeXXL,
+    .plSmallestVisibleSizeXL {
+        display: none;
+    }
+
+    .plCols4>* {
+        width: calc((100% / 2) - 2rem);
+    }
+
+    .plTableColmnHeaderCell,
+    .plTableCell {
+        width: calc(100% / 4);
+    }
+
+    .plPHPCardVersion1 {
+        width: calc(100%/3);
+    }
+
+    .plPHPCardVersion2 {
+        width: calc(100%/2.45);
+    }
+
+    .plPHPCardVersion3 {
+        margin-right: 0;
+    }
+
+    .plPHPCardVersion4 .plPHPCardContent .plVerticalLayout:nth-child(3) {
+        margin-right: 0;
+    }
+}
+
+.sapUiContainer-Medium .plSmallestVisibleSizeXXL,
+.sapUiContainer-Medium .plSmallestVisibleSizeXL,
+.sapUiContainer-Medium .plSmallestVisibleSizeL {
+    display: none;
+}
+
+.sapUiContainer-Medium .plResponsivePadding {
+    width: calc(100% - 2rem);
+}
+
+.sapUiContainer-Medium .plCols4>* {
+    width: calc((100% / 2) - 2rem);
+}
+
+.sapUiContainer-Medium .plTableColmnHeaderCell,
+.sapUiContainer-Medium .plTableCell {
+    width: calc(100% / 3);
+}
+
+@media (min-width: 600px) and (max-width: 1023px) {
+
+    .plSmallestVisibleSizeXXL,
+    .plSmallestVisibleSizeXL,
+    .plSmallestVisibleSizeL {
+        display: none;
+    }
+
+    .plContent.plResponsivePadding {
+        width: calc(100% - 1rem);
+    }
+
+    .plCols4>* {
+        width: calc((100% / 2) - 2rem);
+    }
+
+    .plTableColmnHeaderCell,
+    .plTableCell {
+        width: calc(100% / 3);
+    }
+
+    .plPHPCardVersion1 {
+        width: 50%;
+    }
+
+    .plPHPCardVersion2 {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .plPHPCardVersion4 .plPHPCardContent .plVerticalLayout:nth-child(2) {
+        margin-right: 0;
+    }
+}
+
+.sapUiContainer-Narrow .plSmallestVisibleSizeXXL,
+.sapUiContainer-Narrow .plSmallestVisibleSizeXL,
+.sapUiContainer-Narrow .plSmallestVisibleSizeL,
+.sapUiContainer-Narrow .plSmallestVisibleSizeM {
+    display: none;
+}
+
+.sapUiContainer-Narrow .plResponsivePadding {
+    width: 100%;
+}
+
+.sapUiContainer-Narrow .plCols4>* {
+    width: calc(100% - 1rem);
+}
+
+.sapUiContainer-Narrow .plTableColmnHeaderCell,
+.sapUiContainer-Narrow .plTableCell {
+    width: 100%
+}
+
+@media (max-width: 599px) {
+
+    .plSmallestVisibleSizeXXL,
+    .plSmallestVisibleSizeXL,
+    .plSmallestVisibleSizeL,
+    .plSmallestVisibleSizeM {
+        display: none;
+    }
+
+    .plContent.plResponsivePadding {
+        width: 100%;
+    }
+
+    .plCols4>* {
+        width: calc(100% - 1rem);
+    }
+
+    .plTableColmnHeaderCell,
+    .plTableCell {
+        width: 100%
+    }
+
+    .plPHPCardVersion1 {
+        width: calc(100% - 6rem);
+    }
+
+    .plPHPCardVersion2 {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .plPHPCardVersion4 .plPHPCardContent .plVerticalLayout:nth-child(1) {
+        margin-right: 0;
+    }
+}
+
+.plPHPCard{
+    border: 1px solid var(--sapUiTileBorderColor);
+}
+
+.pInsightsTilesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    max-height: 11.5rem;
+    padding-top: 0.875rem;
+    align-items: flex-start;
+}
+
+.pInsightsTiles {
+    width: 11rem;
+    height: 11rem;
+}
+
+.pInsightsTiles .plOVPCardHeader {
+    border: none;
+}

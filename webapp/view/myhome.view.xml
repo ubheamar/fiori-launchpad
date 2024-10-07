@@ -1,0 +1,194 @@
+<mvc:View
+    controllerName="shellpoc.controller.myhome"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:ux="shellpoc.controls"
+    xmlns:dt="sap.ui.dt"
+    xmlns:fl="sap.ui.fl"
+    displayBlock="true"
+    class="sapUShellFullHeight"
+>
+    <Page
+        id="page"
+        dt:designtime="not-adaptable"
+        class="sapContrastPlus"
+        backgroundDesign="Transparent"
+        showHeader="false"
+        title="{i18n>pageTitle}"
+    >
+        <content>
+            <Page
+                id="mainPage"
+                showHeader="false"
+                backgroundDesign="Transparent"
+                class="sapUiResponsiveContentPadding sapUiPagePadding"
+            >
+                <!-- MAIN WRAPPER -->
+                <ux:Wrapper
+                    id="sectionWrapper"
+                    class="myHomeWrapper"
+                    width="100%"
+                    direction="Column"
+                >
+                    <!-- Content when no sections available -->
+                    <!-- <ux:WrapperItem
+                        id="forNoContentSectionWrapper"
+                        direction="Column"
+                        class="myhomeSectionMarginBottom"
+                    >
+                        <VBox
+                            id="noContentSections"
+                            class="sapUiSmallMargin"
+                            alignItems="Center"
+                            justifyContent="Center"
+                        >
+                            <IllustratedMessage
+                                id="idForNoContentSections"
+                                illustrationSize="Scene"
+                                illustrationType="sapIllus-EmptyList"
+                                title="{i18n>noSectionTitle}"
+                                class="myHomeIllustratedMsg"
+                                description="{i18n>noSectionDescription}"
+                            >
+                                <additionalContent>
+                                    <Button
+                                        text="{i18n>noSectionButton}"
+                                        type="Emphasized"
+                                        id="idForNoContentSectionsBtn"
+                                        press="editMyHomeSettings"
+                                    />
+                                </additionalContent>
+                            </IllustratedMessage>
+                        </VBox>
+                    </ux:WrapperItem> -->
+
+                    <!-- My Interests section -->
+                    <ux:WrapperItem
+                        id="myInterest"
+                        direction="Column"
+                        class="myhomeSectionMarginBottom"
+                    >
+                        <l:VerticalLayout
+                            id="pagesContent"
+                            width="100%"
+                            visible="{= ${view>/availablePages/length} > 0}"
+                        >
+                            <HBox
+                                id="pagesHeaderContainer"
+                                justifyContent="Start"
+                                class="myhomeInterestHeaderMarginBottom"
+                            >
+                                <HBox id="pagesTitleHbox">
+                                    <Title
+                                        id="idPageTitle"
+                                        text="{i18n>secondSectionTitle}"
+                                        titleStyle="H4"
+                                        class="sapMTitleAlign sapTitlePadding sapUiTinyMarginEnd"
+                                    />
+                                    <Button
+                                        id="pagesMenuIcon"
+                                        icon="{=${view>/isPhoneScreen} ? 'sap-icon://overflow' : 'sap-icon://slim-arrow-down'}"
+                                        ariaLabelledBy="idPageTitle pagesMenuIcon"
+                                        tooltip="{i18n>tooltipHamburgerIcon}"
+                                        press="showMenuPopover('PAGES', $event)"
+                                        type="Transparent"
+                                    />
+                                    <core:InvisibleText
+                                        id="idPageTitleAriaText"
+                                        text="{i18n>groupTitle}"
+                                    />
+                                </HBox>
+                            </HBox>
+                            <VBox
+                                id="idEmptyPagesVBox"
+                                backgroundDesign="Solid"
+                                visible="{= ${view>/pages/tiles/length} === 0 }"
+                                height="{= !${view>/isPhoneScreen} ? ${view>/slideTileHeight} : '100%'}"
+                                class="sapUiRoundedBorder noCardsBorder"
+                                justifyContent="Center"
+                            >
+                                <IllustratedMessage
+                                    id="idNoPages"
+                                    class="myHomeIllustratedMsg myHomeIllustratedMessageAlign"
+                                    illustrationSize="Spot"
+                                    illustrationType="sapIllus-SimpleNoSavedItems"
+                                    title="{i18n>noDataTitle}"
+                                    description="{i18n>myInterestnoDataDescription}"
+                                >
+                                    <additionalContent>
+                                        <Button
+                                            id="idAddPageBtn"
+                                            text="{i18n>addPageButton}"
+                                            tooltip="{i18n>addPageButton}"
+                                            press="openPagesEditDialog"
+                                            type="Emphasized"
+                                        />
+                                    </additionalContent>
+                                </IllustratedMessage>
+                            </VBox>
+                            <ux:WrapperItem
+                                id="pagesBox"
+                                direction="Row"
+                                width="{view>/hBoxWidth}"
+                                items="{ path:'view>/pages/tiles',length:8,templateShareable:false }"
+                                class="sapMFlexBoxWrapWrap sapMPagesLoader myhomeHBoxAlign sapMFavorites"
+                                visible="{view>/displayHBox}"
+                                justifyContent="{view>/hBoxJustifyContent}"
+                            >
+                                <GenericTile
+                                    id="favPages"
+                                    width="{view>/pagesTileWidth}"
+                                    header="{view>title}"
+                                    subheader="{= ${view>title} === ${view>spaceTitle} ? null : ${view>spaceTitle}  }"
+                                    press=".onPageTilePress(${view>pageId},${view>spaceId})"
+                                    sizeBehavior="{view>/sizeBehavior}"
+                                    state="{view>/pages/status}"
+                                    frameType="OneByOne"
+                                    mode="IconMode"
+                                    backgroundColor="{view>BGColor}"
+                                    tileIcon="{view>icon}"
+                                    url="{view>url}"
+                                    visible="{view>visible}"
+                                    renderOnThemeChange="true"
+                                    ariaRole="listitem"
+                                    dropAreaOffset="{view>/pagesDropAreaOffset}"
+                                />
+                            </ux:WrapperItem>
+                        </l:VerticalLayout>
+                    </ux:WrapperItem>
+
+                    <!-- My Apps section -->
+                    <!--<ux:WrapperItem
+                        id="myApps"
+                        direction="Column"
+                        class="myhomeSectionMarginBottom"
+                      
+                    >
+                        <mvc:XMLView
+                            id="appsView"
+                            async="true"
+                            viewName="shellpoc.view.Apps"
+                        />
+                    </ux:WrapperItem> -->
+
+                    <!-- My Insights section -->
+                    <ux:WrapperItem
+                        id="myInsights"
+                        direction="Column"
+                        visible="{view>/myInsights/visible}"
+                        class="myhomeSectionMarginBottom"
+                      
+                    >
+                        <core:Fragment
+                            id="insightsFragment"
+                            fragmentName="shellpoc.fragment.InsightsSection"
+                            type="XML"
+                        />
+                    </ux:WrapperItem>
+                </ux:Wrapper>
+            </Page>
+        </content>
+    </Page>
+</mvc:View>

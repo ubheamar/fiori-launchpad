@@ -37,9 +37,49 @@
     "dependencies": {
       "minUI5Version": "1.128.1",
       "libs": {
-        "sap.m": {},
-        "sap.ui.core": {}
-      }
+        "sap.ui.core": {
+            "lazy": false
+        },
+        "sap.m": {
+            "lazy": false
+        },
+        "sap.ui.layout": {
+            "lazy": false
+        },
+        "sap.f": {
+            "lazy": false
+        },
+        "sap.ushell": {
+            "lazy": false
+        },
+        "sap.ui.integration": {
+            "lazy": false
+        },
+        "s4.cfnd.sit.reuse": {
+            "lazy": true
+        },
+        "sap.ui.fl": {
+            "lazy": true
+        },
+        "sap.ui.rta": {
+            "lazy": true
+        },
+        "sap.ui.dt": {
+            "lazy": false
+        },
+        "sap.insights": {
+            "lazy": false
+        },
+        "sap.ui.table": {
+            "lazy": false
+        },
+        "sap.ui.unified":{
+            "lazy": false
+        },
+        "sap.suite.ui.commons":{
+            "lazy": true
+        }
+    }
     },
     "contentDensities": {
       "compact": true,
@@ -57,6 +97,9 @@
       "css": [
         {
           "uri": "css/style.css"
+        },
+        {
+          "uri": "css/placeHolder.css"
         }
       ]
     },
@@ -72,28 +115,28 @@
       },
       "routes": [
         {
-          "name": "RouteHomePage",
-          "pattern": ":?query:",
+          "name": "Routemyhome",
+          "pattern": "Routemyhome",
           "target": [
-            "TargetHomePage"
+            "Targetmyhome"
           ]
         }
       ],
       "targets": {
-        "TargetHomePage": {
+        "Targetmyhome": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "HomePage",
-          "viewName": "HomePage"
+          "viewId": "myhome",
+          "viewName": "myhome"
         }
       }
     },
     "rootView": {
-      "viewName": "shellpoc.view.App",
+      "viewName": "shellpoc.view.myhome",
       "type": "XML",
       "async": true,
-      "id": "App"
+      "id": "myhome"
     }
   }
 }

@@ -3,11 +3,12 @@
  */
 
 sap.ui.define([
-        "sap/ui/core/UIComponent",
-        "sap/ui/Device",
-        "shellpoc/model/models"
-    ],
-    function (UIComponent, Device, models) {
+    "sap/ui/core/UIComponent",
+    "sap/ui/Device",
+    "shellpoc/model/models",
+    "sap/base/util/ObjectPath"
+],
+    function (UIComponent, Device, models, ObjectPath) {
         "use strict";
 
         return UIComponent.extend("shellpoc.Component", {
@@ -21,14 +22,19 @@ sap.ui.define([
              * @override
              */
             init: function () {
-                // call the base component's init function
-                UIComponent.prototype.init.apply(this, arguments);
+                if (
+                    ObjectPath.get("sap-ushell-config.ushell.spaces.enabled") &&
+                    ObjectPath.get("sap-ushell-config.ushell.spaces.myHome.enabled")
+                ) {
+                    // call the base component's init function
+                    UIComponent.prototype.init.apply(this, arguments);
 
-                // enable routing
-                this.getRouter().initialize();
+                    // enable routing
+                    this.getRouter().initialize();
 
-                // set the device model
-                this.setModel(models.createDeviceModel(), "device");
+                    // set the device model
+                    this.setModel(models.createDeviceModel(), "device");
+                }
             }
         });
     }

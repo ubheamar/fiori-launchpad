@@ -1,0 +1,26 @@
+<mvc:View controllerName="shellpoc.controller.Apps"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+    <HBox id="idAppsToolbar" justifyContent="SpaceBetween">
+        <HBox id="idMyAppsBar">
+            <customData>
+                <core:CustomData key="sap-ui-fastnavgroup" value="true" writeToDom="true" />
+            </customData>
+            <Title id="idMyAppsTitle" text="{i18n>appsSectionTitle}" titleStyle="H4" class="sapMTitleAlign sapTitlePadding sapUiTinyMarginEnd"/>
+            <Button
+                id="appsMenuIcon"
+                icon="{=${view>/isPhoneScreen} ? 'sap-icon://overflow' : 'sap-icon://slim-arrow-down'}"
+                type="Transparent"
+                ariaLabelledBy="idMyAppsTitle appsMenuIcon"
+                tooltip="{i18n>tooltipHamburgerIcon}"
+                press="showMenuPopover('APPS', $event)"/>
+        </HBox>
+        <HBox id="appsActionsContainer" visible="{= !${view>/isPhoneScreen}}">
+            <core:InvisibleText id="idMyAppsTitleAriaText" text="{i18n>groupTitle}" />
+            <Button id="idImportAppsIcon" type="Transparent" tooltip="{i18n>migrationMessageStripLink}" visible="{= ${/showImportApps} }" text="{i18n>migrationMessageStripLink}" class="refreshBtnMargin" press="openImportAppsDialog"/>
+            <Button id="idMyAppsEditIcon" type="Transparent" tooltip="{i18n>tooltipApps}" icon="sap-icon://action" visible="{= !${view>/isPhoneScreen} &amp;&amp; ${view>/myApps/editVisible} &amp;&amp; ${/selectedAppKey} === 'favApps' }" text="{i18n>addAppsButton}" press="onEditFavorites"/>
+        </HBox>
+    </HBox>
+    <core:Fragment id="appsFragment" fragmentName="shellpoc.fragment.AppsSection" type="XML"/>
+</mvc:View>

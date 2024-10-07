@@ -5,7 +5,7 @@ sap.ui.define(
     function(BaseController) {
       "use strict";
   
-      return BaseController.extend("shellpoc.controller.App", {
+      return BaseController.extend("shellpoc.controller.Apps", {
         onInit: function() {
         }
       });
