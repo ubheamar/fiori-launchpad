@@ -495,6 +495,58 @@
         }
     },
     "pages": {
+        "MYMEDISET_PG_UI_MYHOME" :{
+            "identification": {
+                "id": "MYMEDISET_PG_UI_MYHOME",
+                "title": "Home Page"
+            },
+            "payload": {
+                "layout": {
+                    "sectionOrder": [
+                       "AZHJGRIT78TG7Y65RF6EPFJ9U",
+                       "3WO90XZ1DX1AS32M7ZM9NBXEF"
+                    ]
+                },
+                "sections": {
+                    "AZHJGRIT78TG7Y65RF6EPFJ9U":{
+                        "id": "AZHJGRIT78TG7Y65RF6EPFJ9U",
+                        "title":"Insights",
+                        "layout": {
+                            "vizOrder": [
+                                "vizProductManager",
+                                "vizCabinetManager",
+                                "vizPartnerManager"
+                            ]
+                        },
+                        "viz": {
+                            "vizProductManager" : {
+                                "id":"vizProductManager",
+                                "vizId": "visualization_product_manager"
+                            },
+                            "vizCabinetManager": {
+                                "id": "vizCabinetManager",
+                                "vizId": "visualization_cabinet_manager"
+                            },
+                            "vizPartnerManager": {
+                                "id": "vizPartnerManager",
+                                "vizId": "visualization_partner_manager"
+                            }
+                        }
+                    },
+                    "3WO90XZ1DX1AS32M7ZM9NBXEF":{
+                        "id": "3WO90XZ1DX1AS32M7ZM9NBXEF",
+                        "title":"My Apps",
+                        "layout": {
+                            "vizOrder": [
+                             
+                            ]
+                        },
+                        "viz": {
+                        }
+                    }
+                }
+            }
+        },
         "MYMEDISET_PG_UI_LIVE_SYNC": {
             "identification": {
                 "id": "MYMEDISET_PG_UI_LIVE_SYNC",

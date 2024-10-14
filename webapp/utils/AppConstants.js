@@ -164,5 +164,6 @@ sap.ui.define(["sap/ui/core/theming/Parameters"], function (Parameters) {
             "APPS": "myApps",
             "INSIGHTS": "myInsights"
         },
+        CARD_READ_URL: "CardData.json"
     };
 });

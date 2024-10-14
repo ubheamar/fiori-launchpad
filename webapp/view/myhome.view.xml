@@ -179,10 +179,42 @@
                         direction="Column"
                         visible="{view>/myInsights/visible}"
                         class="myhomeSectionMarginBottom"
-                      
                     >
                         <core:Fragment
                             id="insightsFragment"
+                            fragmentName="shellpoc.fragment.InsightsSection"
+                            type="XML"
+                        />
+                    </ux:WrapperItem>
+                </ux:Wrapper>
+            </Page>
+
+            <Page
+                id="sliderWrapper"
+                dt:designtime="not-adaptable-tree"
+                showHeader="false"
+                backgroundDesign="Transparent"
+                class="absolutePosition hideFromView sapUiResponsiveContentPadding sapUiPagePadding sapContrastPlus"
+            >
+                <!-- EXPANDED WRAPPER -->
+                <ux:Wrapper
+                    id="expandedWrapper"
+                    width="100%"
+                    height="100%"
+                    direction="Column"
+                    dt:designtime="not-adaptable-tree"
+                >
+                  
+
+                    <ux:WrapperItem
+                        id="myInsightsExpanded"
+                        direction="Column"
+                        class="myhomeSectionMarginBottom expandedPadding"
+                        dt:designtime="not-adaptable-tree"
+                       
+                    >
+                        <core:Fragment
+                            id="insightsFragmentExpanded"
                             fragmentName="shellpoc.fragment.InsightsSection"
                             type="XML"
                         />

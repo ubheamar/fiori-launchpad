@@ -13,6 +13,11 @@ sap.ui.define([
 			spacesMyhomeSpaceid : AppConstants.MYHOME_SPACE_ID,
 			spacesMyhomePageid : AppConstants.MYHOME_PAGE_ID
 		},
+		apps : {
+			insights : {
+				enabled : true
+			}
+		},
 		ushell: {
 			home: {
 				tilesWrappingType: "Hyphenated"
@@ -20,7 +25,8 @@ sap.ui.define([
 			homeApp: {
 				enabled : true,
 				component: {
-					name: "shellpoc",
+					//TODO : dont change this as it cards insight error
+					name: "ux.eng.s4producthomes1",
 					url: "../"
 				}
 			},
