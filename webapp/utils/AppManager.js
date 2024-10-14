@@ -18,7 +18,7 @@ sap.ui.define(
             return oVisualization.vizType.startsWith("X-SAP-UI2-CHIP:SSB");
         };
 
-        var  InstanceProviderClass =  BaseObject.extend("ux.eng.s4producthomes1.utils.AppManager.Implementation", {
+        var  InstanceProviderClass =  BaseObject.extend("shellpoc.utils.AppManager.Implementation", {
 
             /**
              * Returns all apps inside pages passed as parameter

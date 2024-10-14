@@ -1,0 +1,692 @@
+{
+    "_version": "3.1.0",
+    "site": {
+        "identification": {
+            "id": "c9dcc1f3-dec0-4db4-91d3-639bf38d91ce",
+            "namespace": "",
+            "title": "mymediset cloud",
+            "description": "mymediset cloud site"
+        },
+        "payload": {
+            "groupsOrder": [
+                "SAMPLES"
+            ]
+        }
+    },
+    "catalogs": {
+        "SampleCatalog": {
+            "identification": {
+                "id": "SampleCatalog",
+                "title": "Sample Applications"
+            },
+            "payload": {
+                "viz": [
+                    "sap.ushell.demo.AppNavSample",
+                    "sap.ushell.example.startURL",
+                    "sap.ushell.example.startURL1",
+                    "AppStateSampleIcon",
+                    "navigationSample"
+                ]
+            }
+        }
+    },
+    "applications": {
+        "f47ac10b-58cc-4372-a567-0e02b2c3d479": {
+            "sap.app": {
+                "id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+                "title": "Manage Users",
+                "subTitle": "You find here access to all administration functionality",
+                "applicationVersion": {
+                    "version": "1.0.0"
+                },
+                "crossNavigation": {
+                    "inbounds": {
+                        "target": {
+                            "semanticObject": "manageUsers",
+                            "action": "open",
+                            "signature": {
+                                "parameters": {},
+                                "additionalParameters": "allowed"
+                            }
+                        }
+                    }
+                }
+            },
+            "sap.ui": {
+                "technology": "UI5",
+                "icons": {
+                    "icon": "sap-icon://user-settings"
+                },
+                "deviceTypes": {
+                    "desktop": true,
+                    "tablet": true,
+                    "phone": true
+                }
+            },
+            "sap.flp": {
+                "type": "application"
+            },
+            "sap.ui5": {
+                "componentName": "ManageUsers"
+            }
+        },
+        "c9bf9e57-1685-4c89-bafb-ff5af830be8a": {
+            "sap.app": {
+                "id": "c9bf9e57-1685-4c89-bafb-ff5af830be8a",
+                "title": "Settings",
+                "subTitle": "You find here access to all tenant settings",
+                "applicationVersion": {
+                    "version": "1.0.0"
+                },
+                "crossNavigation": {
+                    "inbounds": {
+                        "target": {
+                            "semanticObject": "settings",
+                            "action": "open",
+                            "signature": {
+                                "parameters": {},
+                                "additionalParameters": "allowed"
+                            }
+                        }
+                    }
+                }
+            },
+            "sap.ui": {
+                "technology": "UI5",
+                "icons": {
+                    "icon": "sap-icon://settings"
+                },
+                "deviceTypes": {
+                    "desktop": true,
+                    "tablet": true,
+                    "phone": true
+                }
+            },
+            "sap.flp": {
+                "type": "application"
+            },
+            "sap.ui5": {
+                "componentName": "Settings"
+            }
+        },
+        "dd288d05-9ee9-424e-83cb-a3e22611b167": {
+            "sap.app": {
+                "id": "dd288d05-9ee9-424e-83cb-a3e22611b167",
+                "title": "Job Logs",
+                "subTitle": "Monitors job executions",
+                "applicationVersion": {
+                    "version": "1.0.0"
+                },
+                "crossNavigation": {
+                    "inbounds": {
+                        "target": {
+                            "semanticObject": "jobs",
+                            "action": "open",
+                            "signature": {
+                                "parameters": {},
+                                "additionalParameters": "allowed"
+                            }
+                        }
+                    }
+                }
+            },
+            "sap.ui": {
+                "technology": "UI5",
+                "icons": {
+                    "icon": "sap-icon://it-host"
+                },
+                "deviceTypes": {
+                    "desktop": true,
+                    "tablet": true,
+                    "phone": true
+                }
+            },
+            "sap.flp": {
+                "type": "application"
+            },
+            "sap.ui5": {
+                "componentName": "JobLogs"
+            }
+        },
+        "a3d82a38-2c51-43d7-8af5-59d7dd374a40": {
+            "sap.app": {
+                "id": "a3d82a38-2c51-43d7-8af5-59d7dd374a40",
+                "title": "Product Manager",
+                "subTitle": "Access and manage your products in an easy manner",
+                "applicationVersion": {
+                    "version": "1.0.0"
+                },
+                "crossNavigation": {
+                    "inbounds": {
+                        "target": {
+                            "semanticObject": "productManager",
+                            "action": "open",
+                            "signature": {
+                                "parameters": {},
+                                "additionalParameters": "allowed"
+                            }
+                        }
+                    }
+                }
+            },
+            "sap.ui": {
+                "technology": "UI5",
+                "icons": {
+                    "icon": "sap-icon://product"
+                },
+                "deviceTypes": {
+                    "desktop": true,
+                    "tablet": true,
+                    "phone": true
+                }
+            },
+            "sap.flp": {
+                "type": "application"
+            },
+            "sap.ui5": {
+                "componentName": "ProductManager"
+            }
+        },
+        "b45e145d-84db-4e8e-835d-6c3b4f4a6c1b": {
+            "sap.app": {
+                "id": "b45e145d-84db-4e8e-835d-6c3b4f4a6c1b",
+                "title": "Cabinet Manager",
+                "subTitle": "Use this tool to view and manage your cabinets",
+                "applicationVersion": {
+                    "version": "1.0.0"
+                },
+                "crossNavigation": {
+                    "inbounds": {
+                        "target": {
+                            "semanticObject": "cabinetManager",
+                            "action": "open",
+                            "signature": {
+                                "parameters": {},
+                                "additionalParameters": "allowed"
+                            }
+                        }
+                    }
+                }
+            },
+            "sap.ui": {
+                "technology": "UI5",
+                "icons": {
+                    "icon": "sap-icon://sap-box"
+                },
+                "deviceTypes": {
+                    "desktop": true,
+                    "tablet": true,
+                    "phone": true
+                }
+            },
+            "sap.flp": {
+                "type": "application"
+            },
+            "sap.ui5": {
+                "componentName": "CabinetManager"
+            }
+        },
+        "e55dff1e-bf9a-4aeb-9e43-5e9116c5b2b8": {
+            "sap.app": {
+                "id": "e55dff1e-bf9a-4aeb-9e43-5e9116c5b2b8",
+                "title": "Partner Manager",
+                "subTitle": "Use this tool to view and manage your partners",
+                "applicationVersion": {
+                    "version": "1.0.0"
+                },
+                "crossNavigation": {
+                    "inbounds": {
+                        "target": {
+                            "semanticObject": "partnerManager",
+                            "action": "open",
+                            "signature": {
+                                "parameters": {},
+                                "additionalParameters": "allowed"
+                            }
+                        }
+                    }
+                }
+            },
+            "sap.ui": {
+                "technology": "UI5",
+                "icons": {
+                    "icon": "sap-icon://supplier"
+                },
+                "deviceTypes": {
+                    "desktop": true,
+                    "tablet": true,
+                    "phone": true
+                }
+            },
+            "sap.flp": {
+                "type": "application"
+            },
+            "sap.ui5": {
+                "componentName": "PartnerManager"
+            }
+        },
+        "d1b8e1a8-b3cf-4c34-8e02-f1246e7efeb3": {
+            "sap.app": {
+                "id": "d1b8e1a8-b3cf-4c34-8e02-f1246e7efeb3",
+                "title": "Field Inventory",
+                "subTitle": "Use this tool to view and manage your Field Inventory",
+                "applicationVersion": {
+                    "version": "1.0.0"
+                },
+                "crossNavigation": {
+                    "inbounds": {
+                        "target": {
+                            "semanticObject": "fieldInventory",
+                            "action": "open",
+                            "signature": {
+                                "parameters": {},
+                                "additionalParameters": "allowed"
+                            }
+                        }
+                    }
+                }
+            },
+            "sap.ui": {
+                "technology": "UI5",
+                "icons": {
+                    "icon": "sap-icon://functional-location"
+                },
+                "deviceTypes": {
+                    "desktop": true,
+                    "tablet": true,
+                    "phone": true
+                }
+            },
+            "sap.flp": {
+                "type": "application"
+            },
+            "sap.ui5": {
+                "componentName": "FieldInventory"
+            }
+        },
+        "fc13b3b2-5a71-4e1c-b44c-36e4b88b5781": {
+            "sap.app": {
+                "id": "fc13b3b2-5a71-4e1c-b44c-36e4b88b5781",
+                "title": "Real Time Inventory Tracker",
+                "subTitle": "Use this tool to view and manage Live Inventory",
+                "applicationVersion": {
+                    "version": "1.0.0"
+                },
+                "crossNavigation": {
+                    "inbounds": {
+                        "target": {
+                            "semanticObject": "realTimeInventoryTracker",
+                            "action": "open",
+                            "signature": {
+                                "parameters": {},
+                                "additionalParameters": "allowed"
+                            }
+                        }
+                    }
+                }
+            },
+            "sap.ui": {
+                "technology": "UI5",
+                "icons": {
+                    "icon": "sap-icon://time-entry-request"
+                },
+                "deviceTypes": {
+                    "desktop": true,
+                    "tablet": true,
+                    "phone": true
+                }
+            },
+            "sap.flp": {
+                "type": "application"
+            },
+            "sap.ui5": {
+                "componentName": "RealTimeInventoryTracker"
+            }
+        },
+        "f47ac10b-58cc-4372-a567-0e02b2c3d480": {
+            "sap.app": {
+                "id": "f47ac10b-58cc-4372-a567-0e02b2c3d480",
+                "title": "Manage Roles",
+                "subTitle": "You find here access to all administration roles",
+                "applicationVersion": {
+                    "version": "1.0.0"
+                },
+                "crossNavigation": {
+                    "inbounds": {
+                        "target": {
+                            "semanticObject": "manageRoles",
+                            "action": "open",
+                            "signature": {
+                                "parameters": {},
+                                "additionalParameters": "allowed"
+                            }
+                        }
+                    }
+                }
+            },
+            "sap.ui": {
+                "technology": "UI5",
+                "icons": {
+                    "icon": "sap-icon://roles-settings"
+                },
+                "deviceTypes": {
+                    "desktop": true,
+                    "tablet": true,
+                    "phone": true
+                }
+            },
+            "sap.flp": {
+                "type": "application"
+            },
+            "sap.ui5": {
+                "componentName": "ManageRoles"
+            }
+        }
+    },
+    "systemAliases": {},
+    "visualizations": {
+        "visualization_manage_users": {
+            "vizType": "sap.ushell.StaticAppLauncher",
+            "businessApp": "ManageUsers",
+            "vizConfig": {
+                "sap.flp": {
+                    "target": {
+                        "appId": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+                        "inboundId": "manageUsers"
+                    }
+                }
+            }
+        },
+        "visualization_settings": {
+            "vizType": "sap.ushell.StaticAppLauncher",
+            "businessApp": "Settings",
+            "vizConfig": {
+                "sap.flp": {
+                    "target": {
+                        "appId": "c9bf9e57-1685-4c89-bafb-ff5af830be8a",
+                        "inboundId": "settings"
+                    }
+                }
+            }
+        },
+        "visualization_job_logs": {
+            "vizType": "sap.ushell.StaticAppLauncher",
+            "businessApp": "JobLogs",
+            "vizConfig": {
+                "sap.flp": {
+                    "target": {
+                        "appId": "dd288d05-9ee9-424e-83cb-a3e22611b167",
+                        "inboundId": "jobs"
+                    }
+                }
+            }
+        },
+        "visualization_product_manager": {
+            "vizType": "sap.ushell.StaticAppLauncher",
+            "businessApp": "ProductManager",
+            "vizConfig": {
+                "sap.flp": {
+                    "target": {
+                        "appId": "a3d82a38-2c51-43d7-8af5-59d7dd374a40",
+                        "inboundId": "productManager"
+                    }
+                }
+            }
+        },
+        "visualization_cabinet_manager": {
+            "vizType": "sap.ushell.StaticAppLauncher",
+            "businessApp": "CabinetManager",
+            "vizConfig": {
+                "sap.flp": {
+                    "target": {
+                        "appId": "b45e145d-84db-4e8e-835d-6c3b4f4a6c1b",
+                        "inboundId": "cabinetManager"
+                    }
+                }
+            }
+        },
+        "visualization_partner_manager": {
+            "vizType": "sap.ushell.StaticAppLauncher",
+            "businessApp": "PartnerManager",
+            "vizConfig": {
+                "sap.flp": {
+                    "target": {
+                        "appId": "e55dff1e-bf9a-4aeb-9e43-5e9116c5b2b8",
+                        "inboundId": "partnerManager"
+                    }
+                }
+            }
+        },
+        "visualization_field_inventory": {
+            "vizType": "sap.ushell.StaticAppLauncher",
+            "businessApp": "FieldInventory",
+            "vizConfig": {
+                "sap.flp": {
+                    "target": {
+                        "appId": "d1b8e1a8-b3cf-4c34-8e02-f1246e7efeb3",
+                        "inboundId": "fieldInventory"
+                    }
+                }
+            }
+        },
+        "visualization_real_time_inventory_tracker": {
+            "vizType": "sap.ushell.StaticAppLauncher",
+            "businessApp": "RealTimeInventoryTracker",
+            "vizConfig": {
+                "sap.flp": {
+                    "target": {
+                        "appId": "fc13b3b2-5a71-4e1c-b44c-36e4b88b5781",
+                        "inboundId": "realTimeInventoryTracker"
+                    }
+                }
+            }
+        },
+        "visualization_manage_roles": {
+            "vizType": "sap.ushell.StaticAppLauncher",
+            "businessApp": "ManageRoles",
+            "vizConfig": {
+                "sap.flp": {
+                    "target": {
+                        "appId": "f47ac10b-58cc-4372-a567-0e02b2c3d480",
+                        "inboundId": "manageRoles"
+                    }
+                }
+            }
+        }
+    },
+    "pages": {
+        "MYMEDISET_PG_UI_LIVE_SYNC": {
+            "identification": {
+                "id": "MYMEDISET_PG_UI_LIVE_SYNC",
+                "title": "LiveSync"
+            },
+            "payload": {
+                "layout": {
+                    "sectionOrder": [
+                        "LIVESYNC_SECTION",
+                        "INVENTORY_SECTION"
+                    ]
+                },
+                "sections": {
+                    "LIVESYNC_SECTION": {
+                        "id": "LIVESYNC_SECTION",
+                        "title":"LiveSync",
+                        "layout": {
+                            "vizOrder": [
+                                "vizProductManager",
+                                "vizCabinetManager",
+                                "vizPartnerManager"
+                            ]
+                        },
+                        "viz": {
+                            "vizProductManager" : {
+                                "id":"vizProductManager",
+                                "vizId": "visualization_product_manager"
+                            },
+                            "vizCabinetManager": {
+                                "id": "vizCabinetManager",
+                                "vizId": "visualization_cabinet_manager"
+                            },
+                            "vizPartnerManager": {
+                                "id": "vizPartnerManager",
+                                "vizId": "visualization_partner_manager"
+                            }
+                        }
+                    },
+                    "INVENTORY_SECTION":{
+                        "id": "INVENTORY_SECTION",
+                        "title":"Inventory",
+                        "layout": {
+                            "vizOrder": [
+                                "vizFieldInventory",
+                                "vizRealTimeInventoryTracker"
+                            ]
+                        },
+                        "viz": {
+                          
+                            "vizFieldInventory": {
+                                "id": "vizFieldInventory",
+                                "vizId": "visualization_field_inventory"
+                            },
+                            "vizRealTimeInventoryTracker": {
+                                "id": "vizRealTimeInventoryTracker",
+                                "vizId": "visualization_real_time_inventory_tracker"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "MYMEDISET_PG_UI_CLOUD":{
+            "identification": {
+                "id": "MYMEDISET_PG_UI_CLOUD",
+                "title": "mymediset cloud"
+            },
+            "payload": {
+                "layout": {
+                    "sectionOrder": [
+                        "APPS"
+                    ]
+                },
+                "sections": {
+                }
+            }
+        },
+        "MYMEDISET_PG_UI_ADMIN": {
+            "identification": {
+                "id": "MYMEDISET_PG_UI_ADMIN",
+                "title": "Administration"
+            },
+            "payload": {
+                "layout": {
+                    "sectionOrder": [
+                        "APPS"
+                    ]
+                },
+                "sections": {
+                    "APPS": {
+                        "id": "APPS",
+                        "layout": {
+                            "vizOrder": [
+                                "vizManageUsers",
+                                "vizSettings",
+                                "vizJobLogs"
+                            ]
+                        },
+                        "viz": {
+                          "vizManageUsers": {
+                                "id": "vizManageUsers",
+                                "vizId": "visualization_manage_users"
+                            },
+                            "vizSettings": {
+                                "id": "vizSettings",
+                                "vizId": "visualization_settings"
+                            },
+                            "vizJobLogs": {
+                                "id": "vizJobLogs",
+                                "vizId": "visualization_job_logs"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "menus": {
+        "main": {
+            "identification": {
+                "id": "main"
+            },
+            "payload": {
+                "menuEntries": [
+                    {
+                        "id": "MYMEDISET_SP_UI_LIVE_SYNC",
+                        "help-id": "Space-MYMEDISET_SP_UI_LIVE_SYNC",
+                        "title": "LiveSync",
+                        "description": "LiveSync Space",
+                        "icon": "sap-icon://synchronize",
+                        "type": "IBN",
+                        "target": {
+                            "semanticObject": "Launchpad",
+                            "action": "openFLPPage",
+                            "parameters": [
+                                {
+                                    "name": "pageId",
+                                    "value": "MYMEDISET_PG_UI_LIVE_SYNC"
+                                },
+                                {
+                                    "name": "spaceId",
+                                    "value": "MYMEDISET_SP_UI_LIVE_SYNC"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": "MYMEDISET_SP_UI_CLOUD",
+                        "help-id": "Space-MYMEDISET_SP_UI_CLOUD",
+                        "title": "mymediset Cloud",
+                        "description": "mymediset Cloud Space",
+                        "icon": "sap-icon://cloud",
+                        "type": "IBN",
+                        "target": {
+                            "semanticObject": "Launchpad",
+                            "action": "openFLPPage",
+                            "parameters": [
+                                {
+                                    "name": "pageId",
+                                    "value": "MYMEDISET_PG_UI_CLOUD"
+                                },
+                                {
+                                    "name": "spaceId",
+                                    "value": "MYMEDISET_SP_UI_CLOUD"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": "MYMEDISET_SP_UI_ADMIN",
+                        "help-id": "Space-MYMEDISET_SP_UI_ADMIN",
+                        "title": "Administration",
+                        "description": "Administration Space",
+                        "icon": "sap-icon://key-user-settings",
+                        "type": "IBN",
+                        "target": {
+                            "semanticObject": "Launchpad",
+                            "action": "openFLPPage",
+                            "parameters": [
+                                {
+                                    "name": "pageId",
+                                    "value": "MYMEDISET_PG_UI_ADMIN"
+                                },
+                                {
+                                    "name": "spaceId",
+                                    "value": "MYMEDISET_SP_UI_ADMIN"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,13 +1,18 @@
 sap.ui.define([
 	"sap/base/util/ObjectPath",
 	"sap/ushell/services/Container",
-	"sap/ushell/iconfonts"
-], function (ObjectPath,Container,iconfonts) {
+	"sap/ushell/iconfonts",
+	"./utils/AppConstants"
+], function (ObjectPath,Container,iconfonts,AppConstants) {
 	"use strict";
 
 	// define ushell config
 	ObjectPath.set(["sap-ushell-config"], {
 		defaultRenderer: "fiori2",
+		startupConfig : {
+			spacesMyhomeSpaceid : AppConstants.MYHOME_SPACE_ID,
+			spacesMyhomePageid : AppConstants.MYHOME_PAGE_ID
+		},
 		ushell: {
 			home: {
 				tilesWrappingType: "Hyphenated"
@@ -79,14 +84,22 @@ sap.ui.define([
 			}
 		},
 		services: {
-			Personalization: {
+			AppState: {
+				adapter: {
+					module: "sap.ushell.adapters.local.AppStateAdapter"
+				},
 				config: {
-					appVariantStorage: {
-						enabled: true,
-						adapter: {
-							module: "sap.ushell.adapters.AppVariantPersonalizationAdapter"
-						}
-					}
+					transient: true
+				}
+			},
+			Personalization: {
+			    adapter: {
+					module: "sap.ushell.adapters.local.PersonalizationAdapter"
+				}
+			},
+			PersonalizationV2: {
+			    adapter: {
+					module: "sap.ushell.adapters.local.PersonalizationAdapter"
 				}
 			},
 			CrossApplicationNavigation: {
@@ -97,16 +110,14 @@ sap.ui.define([
 			NavTargetResolution: {
 				config: {
 					enableClientSideTargetResolution: true
-				}
+				},
+				adapter: {
+                	module: "sap.ushell.adapters.local.NavTargetResolutionAdapter"
+            	}
 			},
 			ShellNavigation: {
 				config: {
 					reload: false
-				}
-			},
-			UserDefaultParameterPersistence: {
-				adapter: {
-					module: "sap.ushell.adapters.local.UserDefaultParameterPersistenceAdapter"
 				}
 			},
 			AllMyApps: {
@@ -116,56 +127,66 @@ sap.ui.define([
 					showCatalogApps: true
 				}
 			},
-			Menu: {
+			NavigationDataProvider: {
+				adapter: {
+					module: "sap.ushell.adapters.cdm.ClientSideTargetResolutionAdapter"
+				}
+			},
+			FlpLaunchPage: {
+				adapter: {
+					module: "sap.ushell.adapters.cdm.v3.FlpLaunchPageAdapter"
+				}
+			},
+			VisualizationDataProvider: {
+				adapter: {
+					module: "sap.ushell.adapters.cdm.v3.FlpLaunchPageAdapter"
+				}
+			},
+			Search: {
+				adapter: {
+					module: "sap.ushell.adapters.local.SearchAdapter"
+				}
+			},
+			UserDefaultParameterPersistence: {
+				adapter: {
+					module: "sap.ushell.adapters.local.UserDefaultParameterPersistenceAdapter"
+				}
+			},
+			UserInfo: {
+				adapter: {
+					module: "sap.ushell.adapters.local.UserInfoAdapter"
+				}
+			},
+			/*Menu: {
 				adapter: {
 					config: {
 						enabled: true
-					}
+					},
+					module: "shellpoc.ushell_cloud.adapters.MenuAdapter"
 				}
 			},
 			CommonDataModel : {
 				adapter : {
 					module: "sap.ushell.adapters.cdm.PagesCommonDataModelAdapter"
 				}
-			},
-			"LaunchPage": {
-				"adapter": {
-					"config": {
-						"groups": [{
-							"tiles": [{
-								"tileType": "sap.ushell.ui.tile.StaticTile",
-								"properties": {
-									"title": "App Title",
-									"targetURL": "#shellpoc-display"
-								}
-							}]
-						}]
-					}
-				}
-			},
-			"ClientSideTargetResolution": {
-				"adapter": {
-					"config": {
-						"inbounds": {
-							"shellpoc-display": {
-								"semanticObject": "shellpoc",
-								"action": "display",
-								"description": "An SAP Fiori application.",
-								"title": "App Title",
-								"signature": {
-									"parameters": {}
-								},
-								"resolutionResult": {
-									"applicationType": "SAPUI5",
-									"additionalInformation": "SAPUI5.Component=shellpoc",
-									"url": sap.ui.require.toUrl("shellpoc")
-								}
-							}
-						}
+			}*/
+			CommonDataModel : {
+				adapter : {
+					config: {
+						ignoreSiteDataPersonalization: true,
+						siteDataUrl: "CloudSiteData.json",
+						allowSiteSourceFromURLParameter: true
 					}
 				}
 			}
 		},
+		ui5: {
+			libs: {
+				"sap.ui.core": true,
+				"sap.m": true,
+				"sap.ushell": true
+			}
+		}
 		
 	});
 
@@ -178,7 +199,7 @@ sap.ui.define([
 
 			// sandbox is a singleton, so we can start it only once
 			if (!this._oBootstrapFinished) {
-				this._oBootstrapFinished = sap.ushell.bootstrap("local");
+				this._oBootstrapFinished = sap.ushell.bootstrap("cdm");
 				this._oBootstrapFinished.then(function () {
 					window.sap.ushell.Container.createRendererInternal("fiori2").then(function (oContent) {
 						iconfonts.registerFiori2IconFont();

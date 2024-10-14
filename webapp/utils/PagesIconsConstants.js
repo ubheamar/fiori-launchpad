@@ -7,15 +7,15 @@ sap.ui.define([], function () {
     return {
         PAGES: [
             {
-                id: "LIVE_SYNC",
+                id: "MYMEDISET_PG_UI_LIVE_SYNC",
                 title: "LiveSync",
                 icon: "sap-icon://database"
             }, {
-                id: "ADMINISTRATION",
+                id: "MYMEDISET_PG_UI_ADMIN",
                 title: "Administration",
                 icon: "sap-icon://key-user-settings"
             }, {
-                id: "MYMEDISET_CLOUD",
+                id: "MYMEDISET_PG_UI_CLOUD",
                 title: "mymediset Cloud",
                 icon: "sap-icon://cloud"
             }

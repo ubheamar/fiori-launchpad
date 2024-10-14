@@ -20,11 +20,12 @@ sap.ui.define([
         * Performs a start-up request and synchronizes it with the SAPUI5 boot task.
         * @Param {object} fnCallback To be called for UI5 Core during boot process
          */
-        function start(fnCallback) {
-            
+        function start(fnContinueUI5Boot) {
+            fnContinueUI5Boot();
         }
 
-        function afterBootstrap(fnCallback) {
+        function afterBootstrap() {
+            
         }
 
         oBoottask.start = start;

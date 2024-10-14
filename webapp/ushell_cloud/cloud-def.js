@@ -2,6 +2,7 @@ sap.ui.define([
     "./cloud.configure.ushell",
     "./cloud.load.launchpad",
     "./boottask",
+    "sap/ushell/bootstrap/common/common.override.registermodulepath",
     "sap/ushell/bootstrap/common/common.configure.ui5",
     "sap/ushell/bootstrap/common/common.configure.ui5.extractLibs",
     "sap/ushell/bootstrap/common/common.load.bootstrapExtension",
@@ -11,6 +12,7 @@ sap.ui.define([
     fnConfigureUshell,
     fnLoadLaunchpad,
     oBoottask,
+    fnOverridRegisterModulePath,
     fnConfigureUi5,
     fnExtractUi5LibsFromUshellConfig,
     fnLoadBootstrapExtension,
@@ -27,10 +29,15 @@ sap.ui.define([
         ushellConfig: oUShellConfig,
         libs: fnExtractUi5LibsFromUshellConfig(oUShellConfig),
         theme: "sap_belize",
+        platform: "cloud",
+        platformAdapters: {
+            cloud: "shellpoc.ushell_cloud.adapters",
+        },
         bootTask: oBoottask.start,
         onInitCallback: fnLoadLaunchpad
     });
-
-    oCoreMinLoader.load([]);
+    //fnOverridRegisterModulePath()
     fnLoadBootstrapExtension(oUShellConfig);
+    oCoreMinLoader.load(oUShellConfig.ushell.customPreload);
+   
 });

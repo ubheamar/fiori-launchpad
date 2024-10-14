@@ -55,6 +55,11 @@ sap.ui.define([
                 this._checkAllSectionsVisibility();
                 this._appendThemeVariables();
                 this._addEventListeners();
+                this.colorUtils.initColors();
+                this.setFavoritePages().then(function(){
+                    //this._createUserActionButtons();
+                    //this._adjustLayoutStyles();
+                }.bind(this));
 
                 sap.ushell.Container.getServiceAsync("URLParsing").then(function (URLParsing) {
                     this.oUrlParsing = URLParsing;
@@ -62,6 +67,63 @@ sap.ui.define([
 
                 //Update View Model
                 this._oViewModel.setProperty("/myApps/editVisible", Config.last("/core/shell/enablePersonalization") || Config.last("/core/catalog/enabled"));
+            },
+
+            _arrangeManageSectionsTable: function () {
+                var aElements = this.byId("sectionWrapper").getItems(),
+                    tempArr = [];
+
+                aElements.forEach(
+                    function (element) {
+                        var sId = element.getId();
+                        var oItem = this._sectionItems.find(
+                            function (sectionItem) {
+                                return this.byId(sectionItem.id).getId() === sId;
+                            }.bind(this)
+                        );
+
+                        if (oItem) {
+                            var bIsPageSection = oItem.id === "myInterest",
+                                bIsToDoSection = oItem.id === "forMeToday";
+                            oItem.visible = element.getProperty("visible");
+                            oItem.blocked = false;
+                            oItem.completeId = sId;
+                            tempArr.push(oItem);
+                        }
+                        var bIsNewsPagesVisible = this._oViewModel.getProperty("/newsFeedVisibility"),
+                        bAppsAvailable = this._oViewModel.getProperty("/availablePages/length") > 0,
+                        bToDoSupported = this._oViewModel.getProperty("/todoVisible");
+                        if(bIsPageSection && !bAppsAvailable && !bIsNewsPagesVisible) {
+                            oItem.visible = true;
+                            oItem.blocked = true;
+                        }
+                        if (bIsToDoSection && !bToDoSupported){
+                            oItem.visible = true;
+                            oItem.blocked = true;
+                        }
+                    }.bind(this)
+                );
+
+                this._aOrderedSections = tempArr;
+                this._oViewModel.setProperty("/sectionsOrder", tempArr);
+            },
+
+            _arrangeMyInterestSectionsList: function () {
+                var oNewsSlide = this.byId("idNewsSlide"),
+                    tempArr = [];
+
+                var oItem = this._myInterestSectionItems.find(
+                    function (myInterestSectionItem) {
+                        return this.byId(myInterestSectionItem.id).getId() === oNewsSlide.getId();
+                    }.bind(this)
+                );
+                if (oItem) {
+                    oItem.visible = oNewsSlide.getProperty("visible");
+                    tempArr.push(oItem);
+                }
+                this._aOrderedSections = tempArr;
+
+                this._oViewModel.setProperty("/myInterestSectionsOrder", tempArr);
             },
 
             _initializeViewModel: function () {
@@ -142,6 +204,15 @@ sap.ui.define([
                     }.bind(this)
                     );
             },
+            _refreshAllApps: function () {
+                this._setDynamicApps();
+                //if apps section is visible then refresh apps
+                var oAppsSection = this.getRootView().byId("myApps");
+                if(oAppsSection && oAppsSection.getVisible()){
+                    EventHub.emit("refreshApps", Date.now());
+                }
+            },
+
 
             /**
             * Initialize the app as cards provider for SAP Collaboration Manager.
@@ -167,6 +238,67 @@ sap.ui.define([
                 }.bind(this));
                 this._oViewModel.setProperty("/isAllSectionsVisible", bIsPageEmpty);
                 this._adjustLayoutStyles();
+            },
+            _arrangeManageSectionsTable: function () {
+                var aElements = this.byId("sectionWrapper").getItems(),
+                    tempArr = [];
+
+                aElements.forEach(
+                    function (element) {
+                        var sId = element.getId();
+                        var oItem = this._sectionItems.find(
+                            function (sectionItem) {
+                                return this.byId(sectionItem.id).getId() === sId;
+                            }.bind(this)
+                        );
+
+                        if (oItem) {
+                            var bIsPageSection = oItem.id === "myInterest",
+                                bIsToDoSection = oItem.id === "forMeToday";
+                            oItem.visible = element.getProperty("visible");
+                            oItem.blocked = false;
+                            oItem.completeId = sId;
+                            tempArr.push(oItem);
+                        }
+                        var bIsNewsPagesVisible = this._oViewModel.getProperty("/newsFeedVisibility"),
+                        bAppsAvailable = this._oViewModel.getProperty("/availablePages/length") > 0,
+                        bToDoSupported = this._oViewModel.getProperty("/todoVisible");
+                        if(bIsPageSection && !bAppsAvailable && !bIsNewsPagesVisible) {
+                            oItem.visible = true;
+                            oItem.blocked = true;
+                        }
+                        if (bIsToDoSection && !bToDoSupported){
+                            oItem.visible = true;
+                            oItem.blocked = true;
+                        }
+                    }.bind(this)
+                );
+
+                this._aOrderedSections = tempArr;
+                this._oViewModel.setProperty("/sectionsOrder", tempArr);
+            },
+
+            onPageTilePress: function (pageId, spaceId) {
+                if(this._oViewModel.getProperty("/pages/status") !== "Loading") {
+                    sap.ushell.Container.getServiceAsync("CrossApplicationNavigation").then(function (oService) {
+                        var sHref =
+                            oService.hrefForExternal({
+                                target: {
+                                    semanticObject: "Launchpad",
+                                    action: "openFLPPage"
+                                },
+                                params: {
+                                    pageId: pageId,
+                                    spaceId: spaceId
+                                }
+                            }) || "";
+                        oService.toExternal({
+                            target: {
+                                shellHash: sHref
+                            }
+                        });
+                    });
+                }
             },
 
             _adjustLayoutStyles: function () {
@@ -208,6 +340,23 @@ sap.ui.define([
                 Object.keys(oCustomStyles).forEach(function(sStyleKey) {
                     this._oViewModel.setProperty(sStyleKey, oCustomStyles[sStyleKey]);
                 }.bind(this));
+            },
+
+            _calculateInsightsCardCount: function() {
+                var oPageDomRef = this.byId("mainPage").getDomRef(),
+                    aInsightsCards = !this._oViewModel.getProperty("/myInsights/disabled") && this.getView().getModel("insights") && this.getView().getModel("insights").getProperty("/cards") || [],
+                    iCount;
+
+                if (oPageDomRef && aInsightsCards.length) {
+                    var oPageSectionDomRef = oPageDomRef.childNodes[0],
+                        oSectionProperties = this._fetchElementProperties(oPageSectionDomRef, ["width", "padding-left", "padding-right"]),
+                        iAvailableWidth = oSectionProperties["width"] - oSectionProperties["padding-left"] - oSectionProperties["padding-right"],
+                        iCardWidth = 304 + 14; //19rem + Margin
+
+                   iCount = Math.floor(iAvailableWidth / iCardWidth);
+                   iCount = iCount > 0 ? iCount : 1;
+                }
+                return iCount || 1;
             },
             _observeInsightsSection: function () {
                 var oInsightsSectionDomRef = this.byId("myInsights").getDomRef();
@@ -372,26 +521,367 @@ sap.ui.define([
                 }.bind(this));
             },
 
-            _calculateInsightsCardCount: function() {
-                var oPageDomRef = this.byId("mainPage").getDomRef(),
-                    aInsightsCards = !this._oViewModel.getProperty("/myInsights/disabled") && this.getView().getModel("insights") && this.getView().getModel("insights").getProperty("/cards") || [],
-                    iCount;
+            adjustInsightTilesAlign: function(oApp) {
+                oApp.setLayoutData(
+                    new GridContainerItemLayoutData({
+                        minRows: 2,
+                        columns: oApp.getDisplayFormat() === AppConstants.DisplayFormat.Standard ? 2 : 4
+                    })
+                );
+            },
 
-                if (oPageDomRef && aInsightsCards.length) {
-                    var oPageSectionDomRef = oPageDomRef.childNodes[0],
-                        oSectionProperties = this._fetchElementProperties(oPageSectionDomRef, ["width", "padding-left", "padding-right"]),
-                        iAvailableWidth = oSectionProperties["width"] - oSectionProperties["padding-left"] - oSectionProperties["padding-right"],
-                        iCardWidth = 304 + 14; //19rem + Margin
+            _setDynamicApps: function () {
+                return this.appManagerInstance.fetchInsightApps(this._bAppLoaded, this.i18Bundle.getText("insightsTitle"))
+                    .then(function (aMyInsightApps) {
+                        var bIsMobileDevice = this._oViewModel.getProperty("/isPhoneScreen"),
+                            aDynAppContainers = this._getDynamicTileContainer(),
+                            aExistingVisualizationIDs = this.orgMyInsightAppsContents ? Object.keys(this.orgMyInsightAppsContents) : [],
+                            bReloadIfNecessary = aExistingVisualizationIDs.length !== aMyInsightApps.length || aExistingVisualizationIDs.filter(function (sID) {
+                                var oExistingApp = aMyInsightApps.find(function (oApp) {
+                                    return oApp.visualization.vizId === sID || oApp.visualization.targetURL === sID;
+                                });
+                                return !oExistingApp;
+                            }).length > 0;
 
-                   iCount = Math.floor(iAvailableWidth / iCardWidth);
-                   iCount = iCount > 0 ? iCount : 1;
+                        if (!this.orgMyInsightAppsContents || bReloadIfNecessary) {
+                            this.oDynAppsLoad = this._smartTileVisualizationFactory(aMyInsightApps)
+                                .then(function(oMyInsightAppsContents) {
+                                    this._clearInsightsTileCache();
+                                    this.orgMyInsightAppsContents = Object.assign({}, oMyInsightAppsContents);
+                                    var aDynamicApps = Object.values(this.orgMyInsightAppsContents);
+                                    aDynAppContainers.forEach(function (oDynAppContainer) {
+                                        oDynAppContainer.removeAllApps();
+                                        if (bIsMobileDevice) {
+                                            // Mobile View
+                                            aDynamicApps.forEach(function(oApp) {
+                                                oDynAppContainer.addApp(oApp);
+                                            });
+                                        } else {
+                                            // Desktop and Tablet View
+                                            this._calculateDynamicTileCount()
+                                                .then(function(iCount) {
+                                                    aDynamicApps = this._oViewModel.getProperty("/sections/" + AppConstants.SECTIONS.INSIGHTS + "/expanded")
+                                                        || this._oViewModel.getProperty("/sections/" + AppConstants.SECTIONS.INSIGHTS_TILES + "/expanded")
+                                                        ? aDynamicApps
+                                                        : aDynamicApps.slice(0, iCount);
+
+                                                    aDynamicApps.forEach(function(oApp) {
+                                                        oDynAppContainer.addApp(oApp);
+                                                    });
+                                                    this._oViewModel.setProperty("/dynamicApps/viewAllVisible", iCount < aMyInsightApps.length);
+                                                }.bind(this));
+                                        }
+                                    }.bind(this));
+                                    this._adjustInsightsLayout();
+                                }.bind(this));
+                        }
+
+                        this._oViewModel.setProperty(AppConstants.DynamicAppsLength, aMyInsightApps.length);
+                        this._oViewModel.setProperty("/dynamicApps/status", "Loaded");
+                        this._handleExpandTiles(aMyInsightApps.length);
+
+                        this._setAllDynamicApps(aMyInsightApps);
+                    }.bind(this))
+                    .finally(function(){
+                        this.markPerformance(AppConstants.SECTIONS_ID.INSIGHTS);
+                    }.bind(this));
+            },
+
+            _handleExpandTiles: function(iDynamicAppLength){
+                if (this._expandParam && this._expandParam === AppConstants.SECTIONS.INSIGHTS_TILES) {
+                    if (iDynamicAppLength) {
+                        this.expandSection({isSectionExpanded:true, expandType:this._expandParam, isHashChangeTrigger:true});
+                        this._expandParam = null;
+                    } else {
+                        this.getHashChanger().replaceHash(AppConstants.MYHOME_URL_HASH);
+                    }
                 }
-                return iCount || 1;
+            },
+
+            _expandDynamicAppsContainer: function(bIsSectionExpanded) {
+                return this.oDynAppsLoad && this.oDynAppsLoad.then(function() {
+                    var oDynAppContainer = this.getView().byId("insightsFragmentExpanded--dynAppsFlexContainer"),
+                        aContents = this.orgMyInsightAppsContents ? Object.values(this.orgMyInsightAppsContents) : [];
+
+                    oDynAppContainer.removeAllApps();
+
+                    aContents.forEach(function(oContent) {
+                        oDynAppContainer.addItem(oContent);
+                    });
+
+                    if (!bIsSectionExpanded) {
+                        this._adjustInsightsLayout();
+                    }
+                }.bind(this));
+            },
+
+            _setAllDynamicApps: function (aMyInsightApps) {
+                return this.appManagerInstance.fetchFavApps(this._bAppLoaded, true)
+                    .then(function(aFavApps) {
+                        var aDynamicApps = aFavApps.filter(function (oDynApp) {
+                            return oDynApp.isCount || oDynApp.isSmartBusinessTile;
+                        });
+
+                        // Filter out duplicate apps from favApps
+                        var aFilteredDynApps = aDynamicApps.filter(function (oDynApp) {
+                            var iAppIndex = aMyInsightApps.findIndex(function (oInsightApps) {
+                                return !oDynApp.visualization.isBookmark && oInsightApps.visualization.vizId === oDynApp.visualization.vizId
+                                || oDynApp.visualization.isBookmark && oInsightApps.visualization.targetURL === oDynApp.visualization.targetURL;
+                            });
+                            return iAppIndex === -1;
+                        });
+
+                        aFilteredDynApps.forEach(function (oFilteredApp) {
+                            oFilteredApp.isConvertEnabled = false;
+                            oFilteredApp.selected = false;
+                        });
+                        var aFavEnabledApps = [];
+
+                        aMyInsightApps.forEach(function (oInsightsApp) {
+                            oInsightsApp.isConvertEnabled = false;
+                            oInsightsApp.isAddFavEnabled = false;
+                            var aSupportedDisplayFormats = oInsightsApp.visualization.supportedDisplayFormats;
+
+                            // Check if static tile
+                            if (!oInsightsApp.isCount && !oInsightsApp.isSmartBusinessTile) {
+                                // Check if App is not present in Fav Apps
+                                var iAppIndex = aFavApps.findIndex(function (oFavApp) {
+                                    return oFavApp.visualization.vizId === oInsightsApp.visualization.vizId || oFavApp.appId === oInsightsApp.appId;
+                                });
+                                if (iAppIndex === -1) {
+                                    oInsightsApp.isAddFavEnabled = true;
+                                    aFavEnabledApps.push(oInsightsApp);
+                                }
+                            }
+
+                            //if both standard and standard wide display formats are available
+                            //then provide option to convert
+                            else if(aSupportedDisplayFormats.length > 1
+                                && aSupportedDisplayFormats.indexOf(AppConstants.DisplayFormat.Standard) > -1
+                                && aSupportedDisplayFormats.indexOf(AppConstants.DisplayFormat.StandardWide) > -1
+                            ){
+                                oInsightsApp.isConvertEnabled = true;
+                            }
+                        });
+                        aFavEnabledApps = this.appManagerInstance.filterDuplicateApps(aFavEnabledApps,false);
+                        var allDynamicApps = aMyInsightApps.concat(aFilteredDynApps);
+                        this._oViewModel.setProperty("/allDynamicApps", allDynamicApps);
+                        this._oViewModel.setProperty("/allInsightApps", aMyInsightApps);
+                        this._oViewModel.setProperty("/allSuggestedApps", aFilteredDynApps);
+                        this._oViewModel.setProperty("/allAppFavEnabledApps", aFavEnabledApps);
+                    }.bind(this))
+                    .catch(function (oError) {
+                        Log.error(oError);
+                    });
+            },
+
+            addSuggTiles : function () {
+                this._suggestedTileDialog.setBusy(true);
+                var oDialogProps = this.getDialogProperties();
+                var aAllMoveElements = this.getModel("view").getProperty(oDialogProps.allApps);
+                var aSelectedApps = sap.ui.core.Element.getElementById(oDialogProps.dialogId).getSelectedItems();
+                return this.appManagerInstance.getSections().then(function(aSections){
+                    return aSelectedApps.reduce(function(pApp, oApp){
+                        return pApp.then(function(){
+                            var index = oApp.getBindingContextPath().split("/")[2];
+                            var oSelectedApp = aAllMoveElements[index];
+                            var iMyInsightSectionIndex = aSections.findIndex(function(oSection){
+                                return oSection.id === AppConstants.MYINSIGHT_SECTION_ID;
+                            });
+                            var oMovingConfig = {
+                                pageId: AppConstants.MYHOME_PAGE_ID,
+                                sourceSectionIndex: oSelectedApp.persConfig.sectionIndex,
+                                sourceVisualizationIndex: oSelectedApp.persConfig.visualizationIndex,
+                                targetSectionIndex: iMyInsightSectionIndex,
+                                targetVisualizationIndex: -1
+                            };
+                            if (oSelectedApp.visualization.displayFormatHint !== "standard" && oSelectedApp.visualization.displayFormatHint !== "standardWide") {
+                                if (oSelectedApp.visualization.supportedDisplayFormats.includes("standard")){
+                                    oSelectedApp.visualization.displayFormatHint = "standard";
+                                } else if (oSelectedApp.visualization.supportedDisplayFormats.includes("standardWide")){
+                                    oSelectedApp.visualization.displayFormatHint = "standardWide";
+                                }
+                            }
+                            // Add Selected App to Insights Section
+                            var checkBookMarkPromise = oSelectedApp.visualization.isBookmark === true ?
+                            this.appManagerInstance.addBookMark(oSelectedApp.visualization, oMovingConfig)
+                                : this.appManagerInstance.addApps(oSelectedApp.visualization.vizId, AppConstants.MYINSIGHT_SECTION_ID);
+                            if (!oSelectedApp.visualization.vizId) {
+                                oSelectedApp.visualization.vizId = oSelectedApp.visualization.targetURL;
+                            }
+                            return checkBookMarkPromise.then(function() {
+                                var aDynAppContainers = this._getDynamicTileContainer();
+                                return this._smartTileVisualizationFactory([oSelectedApp])
+                                    .then(function(oMyInsightAppsContents) {
+                                        this.orgMyInsightAppsContents[oSelectedApp.visualization.vizId] = oMyInsightAppsContents[oSelectedApp.visualization.vizId];
+                                        aDynAppContainers.forEach(function (oDynAppContainer) {
+                                            oDynAppContainer.addApp(oMyInsightAppsContents[oSelectedApp.visualization.vizId]);
+                                        });
+                                    }.bind(this));
+                            }.bind(this));
+                        }.bind(this));
+                    }.bind(this), Promise.resolve()).
+                    then(function(){
+                        this._refreshAllApps();
+                        this._adjustInsightsLayout();
+                        this._suggestedTileDialog.setBusy(false);
+                        this._suggestedTileDialog.close();
+                        var count = aSelectedApps.length;
+                        var msgToastTextKey = count === 1 ? "oneSmartTileAddCount" : "smartTileAddCount";
+                        MessageToast.show(this.i18Bundle.getText(msgToastTextKey, [count]));
+                    }.bind(this));
+                }.bind(this));
+            },
+
+            navigateToInsightsAppFinder: function () {
+                if(this._suggestedTileDialog){
+                    this._suggestedTileDialog.close();
+                }
+                this.navigateToAppFinder({
+                    pageID: encodeURIComponent(AppConstants.MYHOME_PAGE_ID),
+                    sectionID: encodeURIComponent(AppConstants.MYINSIGHT_SECTION_ID)
+                });
+            },
+
+          
+
+            _setFavPages: function (aFavPages, bUpdatePersonalisation) {
+                var bArePagesEmpty;
+                aFavPages.forEach(function (oPage) {
+                    oPage.selected = true;
+                    if (!oPage.BGColor) {
+                        oPage.BGColor = this.colorUtils.getFreeColor();
+                    } else {
+                        this.colorUtils.addColor(oPage.BGColor);
+                    }
+                }.bind(this));
+
+                //Update View Model with favorite pages
+                this._oViewModel.setProperty("/pages/status", "Loaded");
+                this._oViewModel.setProperty("/pages/tiles", aFavPages);
+                this._oViewModel.setProperty("/pages/tiles/length", aFavPages.length);
+               // this._arrangeMyInterestSectionsList();
+
+                //Update the Personalisation model
+                if (bUpdatePersonalisation) {
+                    this.getPersonalization().then(function(oPersonalization){
+                        var oPersModel = oPersonalization.oPersModel;
+                        var oPersonalizer = oPersonalization.oPersonalizer;
+                        oPersModel.setProperty("/favouritePages", aFavPages);
+                        var oPersData = oPersModel.getData();
+                        oPersonalizer.write(oPersData);
+                    });
+                }
+
+                //Display pages container if there are pages
+                bArePagesEmpty = !aFavPages.length;
+                this._oViewModel.setProperty("/displayVerticalLayout", bArePagesEmpty ? false : true);
+                this._oViewModel.setProperty("/displayHBox", bArePagesEmpty ? false : true);
+                this.byId("pagesBox").removeStyleClass("sapMPagesLoader");
+
+                if (!bArePagesEmpty) {
+                    //Fetch and apply Icons for Favorite Pages
+                    this._applyIconsForFavPages();
+                }
+
+                //Adjust layout accordingly
+                window.addEventListener("focus", this.applyPageTileStyleOnWindowFocus.bind(this), true);
+                this._adjustLayoutStyles();
+            },
+
+            _setDefaultPages: function (aAvailablePages) {
+                var aFavoritePages = aAvailablePages.slice(0, AppConstants.PAGE_SELECTION_LIMIT) || [];
+                this._setFavPages(aFavoritePages);
+            },
+
+            setFavoritePages: function (bForceUpdate) {
+                return this.getPersonalization().then(function(oPersonalization){
+                    var oPersModel = oPersonalization.oPersModel;
+                    var oPersonalizer = oPersonalization.oPersonalizer;
+                    var aFavoritePages = oPersModel ? oPersModel.getProperty("/favouritePages") : undefined;
+                    return this.appManagerInstance.fetchAllAvailablePages(true).then(function(aAvailablePages) {
+                        //Set first 8 available pages are favorite if no favorite page data is present
+                        if (!aFavoritePages) {
+                            this._setDefaultPages(aAvailablePages);
+                        }
+                        else {
+                            var aPages = [], oExistingPage;
+                            aFavoritePages.forEach(function(oPage) {
+                                oExistingPage = aAvailablePages.find(function(oAvailablePage) {
+                                    return oAvailablePage.pageId === oPage.pageId;
+                                });
+                                if (oExistingPage) {
+                                    oExistingPage.BGColor = oPage.BGColor;
+                                    aPages.push(oExistingPage);
+                                }
+                            });
+                            //To send Maximum of 8 Pages (BCP incident: 2270169293)
+                            aPages = aPages.slice(0, AppConstants.PAGE_SELECTION_LIMIT);
+                            if (aPages.length || !aFavoritePages.length) {
+                                this._setFavPages(aPages, aPages.length !== aFavoritePages.length || bForceUpdate);
+                            } else if (!aPages.length && aFavoritePages.length) {
+                                //Clean unaccessible page data
+                                oPersModel.setProperty("/favouritePages", undefined);
+                                var oPersData = oPersModel.getData();
+                                oPersonalizer.write(oPersData);
+                                this._setDefaultPages(aAvailablePages);
+                            }
+                        }
+
+                        //Update available pages list
+                        this._oViewModel.setProperty("/availablePages", aAvailablePages);
+                    }.bind(this));
+                }.bind(this))
+                .finally(function(){
+                    this.markPerformance(AppConstants.SECTIONS_ID.PAGES);
+                }.bind(this));
+            },
+
+            applyPageTileStyleOnWindowFocus: function() {
+                //Added the extra condition of bPageSectionVisibleCheck as a Fix for BCP Internal Incident: 2270166900
+                var bPageSectionVisibleCheck = this.byId('myInterest') && this.byId('myInterest').getVisible() && this._oViewModel.getProperty("/pages/tiles/length");
+                if(!this.pageTilesStylesApplied && bPageSectionVisibleCheck){
+                    this._adjustLayoutStyles();
+                }
+            },
+
+            onBeforeRendering: function () {
+                //Apply Personalization Changes to Favorite Pages
+                this.byId("pagesBox").getBinding("items").attachChange(function() {
+                    this.oKeyUserPersonalization.applyPagePersonalizations();
+                },this);
+
+                //reset expand parameter after navigating back from appFinder
+                this._expandParam = null;
+
+                // Open Edit Insights Dialog if navigated back from AppFinder
+                if(this.openMyInsightsDialog){
+                    this.editInsightclearFilter();
+                    this._showManageSectionsDialog(this._oSettingsView.getModel("settings").getProperty("/myHomeSettingsSelectedItem"));
+                    this.openMyInsightsDialog = false;
+                }
+
+                this._refreshDataModel();
             },
 
             _isNewsTileVisible: function () {
                 return (this.getView().byId("idNewsSlide") && this.getView().byId("idNewsSlide").getProperty("visible"))
                     || (this._oViewModel.getProperty("/newsFeed/showCustom") && this._oViewModel.getProperty("/news/error") && this._oViewModel.getProperty("/newsFeedVisibility"));
+            },
+
+            _refreshDataModel: function () {
+                this._refreshAllApps();
+                this._arrangeManageSectionsTable();
+            },
+
+            _applyIconsForFavPages: function() {
+                this._oViewModel.getProperty("/pages/tiles")
+                    .filter(function(oPage) {
+                        return !oPage.isIconLoaded;
+                    })
+                    .map(function(oPage) {
+                        return this.appManagerInstance.getIconForPage(oPage);
+                    }.bind(this));
             },
 
             _appendThemeVariables: function() {

@@ -27,6 +27,27 @@
 
     <!-- <script src="../test-resources/sap/ushell/bootstrap/sandbox.js" id="sap-ushell-bootstrap"></script> -->
     <!-- Bootstrap the UI5 core library. 'data-sap-ui-frameOptions="allow"'' is a NON-SECURE setting for test environments -->
+<!-- 
+    <script>
+        window['sap-ui-config'] = {
+            'xx-bootTask' : bootTask
+        };
+
+        function bootTask(){
+            var sAsyncLoader = document.getElementById("sap-ui-bootstrap").getAttribute("data-sap-ui-async");
+                if (sAsyncLoader && sAsyncLoader.toLowerCase() === "true") {
+                    sap.ui.require(["shellpoc/ushell_cloud/cloud-def"])
+                    return;
+                }
+                sap.ui.requireSync("shellpoc/ushell_cloud/cloud-def")
+        }
+        //document.getElementById("sap-ui-bootstrap").setAttribute("data-sap-ui-xx-boot-task",bootTask)
+
+    </script> -->
+
+    <!-- Ushell is bootstrapped with -->
+	<!-- <script src="index.js" id="sap-ushell-bootstrap"></script> -->
+
     <script id="sap-ui-bootstrap" 
         src="../resources/sap-ui-core.js" 
         data-sap-ui-libs="sap.m,sap.ui.core,sap.ushell"
@@ -35,12 +56,20 @@
         data-sap-ui-theme="sap_horizon"
         data-sap-ui-compatVersion="edge" 
         data-sap-ui-language="en" 
-        data-sap-ui-oninit="module:shellpoc/initFlp"
         data-sap-ui-resourceroots='{"shellpoc": "./"}' 
         data-sap-ui-frameOptions="allow"
+        data-sap-ui-oninit="module:shellpoc/initFlp"
+        
         data-sap-ui-flexibilityServices='[{"connector": "LocalStorageConnector"}]'>
-        </script>
-    <!--<script id="locate-reuse-libs" src="./locate-reuse-libs.js" data-sap-ui-manifest-uri="../manifest.json">
+    </script>
+   
+    
+
+        <!-- <script id="sap-ui-bootstrap" src="index.js" data-sap-ui-async="false"></script>  -->
+    <!--
+        data-sap-ui-xx-boot-task=bootTask
+     data-sap-ui-oninit="module:shellpoc/initFlp"
+    <script id="locate-reuse-libs" src="./locate-reuse-libs.js" data-sap-ui-manifest-uri="../manifest.json">
     </script>-->
 </head>
 

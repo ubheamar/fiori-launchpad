@@ -25,6 +25,21 @@ sap.ui.define([
                     myHome: {
                         enabled: true
                     }
+                },
+                customPreload: {
+                    enabled: true,
+                    coreResources: [
+                        "sap/ushell/bootstrap/core-min-0.js",
+                        "sap/ushell/bootstrap/core-min-1.js",
+                        "sap/ushell/bootstrap/core-min-2.js",
+                        "sap/ushell/bootstrap/core-min-3.js"
+                    ],
+                    coreResourcesComplement: [
+                        "sap/ushell/preload-bundles/core-ext-light-0.js",
+                        "sap/ushell/preload-bundles/core-ext-light-1.js",
+                        "sap/ushell/preload-bundles/core-ext-light-2.js",
+                        "sap/ushell/preload-bundles/core-ext-light-3.js"
+                    ]
                 }
             },
             renderers: {
@@ -109,11 +124,11 @@ sap.ui.define([
                         showCatalogApps: true
                     }
                 },
-                NavigationDataProvider: {
-                    adapter: {
-                        module: "sap.ushell_abap.adapters.abap.ClientSideTargetResolutionAdapter"
-                    }
-                },
+                // NavigationDataProvider: {
+                //     adapter: {
+                //         module: "sap.ushell_abap.adapters.abap.ClientSideTargetResolutionAdapter"
+                //     }
+                // },
                 Menu: {
                     adapter: {
                         config: {
